@@ -1,63 +1,63 @@
 \babel@toc {slovak}{}\relax 
-\contentsline {section}{\numberline {1}Úvod}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Ciel projektu}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Členovia tímu a rozdelenie úloh}{2}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Hardvérová časť}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Zoznam komponentov}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Schéma zapojenia}{2}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Popis TEC1-12706}{2}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Popis DS18B20}{2}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Výkonová elektronika (PWM, MOSFET)}{2}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Hydraulický okruh}{2}{subsection.2.6}%
-\contentsline {section}{\numberline {3}Architektúra systému}{2}{section.3}%
-\contentsline {subsection}{\numberline {3.1}UML diagram}{2}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Popis komunikačných protokolov}{2}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Identifikácia systému}{2}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Postup merania skokovej odozvy}{2}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Regulácia peltier}{2}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Výpočet K,T}{2}{subsubsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.3}Regulácia pumpa}{2}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Výpočet K,T}{2}{subsubsection.4.3.1}%
-\contentsline {section}{\numberline {5}Návrh regulátora}{2}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Mód 1 - návrh PID pre TEC}{2}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Mód 2 - návrh PID pre pumpu}{2}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Výsledné parametre}{2}{subsection.5.3}%
-\contentsline {section}{\numberline {6}ESP32 firmware}{2}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Popis kódu}{2}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}PWM konfigurácia}{2}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Implementácia PID}{2}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}MQTT komunikácia}{2}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Bezpečnostné prvky (saturácia, anti-windup)}{2}{subsection.6.5}%
-\contentsline {section}{\numberline {7}Backend - Raspberry Pi}{2}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Flask + SocketIO}{2}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}MQTT broker (Mosquitto)}{2}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}SQL databáza}{2}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}CSV + JSON archivácia}{2}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Thingsboard integrácia}{2}{subsection.7.5}%
-\contentsline {section}{\numberline {8}Frontend - Webový dashboard}{2}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Popis funkcií (Open/Start/Stop/Close)}{2}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Grafy}{2}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Ciferníky}{2}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Tabuľka meraní}{2}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}PID Panel}{2}{subsection.8.5}%
-\contentsline {subsection}{\numberline {8.6}Dashboard}{2}{subsection.8.6}%
-\contentsline {section}{\numberline {9}Výsledky merania}{2}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Graf regulácie Mód 2}{2}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Graf regulácie Mód 3}{2}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Zhodnotenie kvality regulácie}{2}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Porovnanie módov}{2}{subsection.9.4}%
-\contentsline {section}{\numberline {10}Používateľská príručka}{2}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Spustenie systému (krok za krokom)}{2}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Popis tlačidiel dashboardu}{2}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Nastavenie PID parametrov}{2}{subsection.10.3}%
-\contentsline {subsection}{\numberline {10.4}Export dát}{2}{subsection.10.4}%
-\contentsline {section}{\numberline {11}Vývojárska príručka}{2}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Štruktúra repozitára (GitHub link)}{2}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}Inštalácia závislostí}{2}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Konfigurácia (WiFi, MQTT, port)}{2}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}Spustenie backendu}{2}{subsection.11.4}%
-\contentsline {section}{\numberline {12}Záver}{2}{section.12}%
-\contentsline {section}{\numberline {13}Zoznam literatúry}{2}{section.13}%
-\contentsline {section}{\numberline {14}Body zadania}{2}{section.14}%
-\contentsline {section}{\numberline {15}Výsledky simulácie}{2}{section.15}%
-\contentsline {section}{\numberline {16}Záver}{2}{section.16}%
+\contentsline {section}{\numberline {1}Úvod}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Cieľ projektu}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Členovia tímu a rozdelenie úloh}{1}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Hardvérová časť}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Zoznam komponentov}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Schéma zapojenia}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Popis TEC1-12706}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Popis DS18B20}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Výkonová elektronika (PWM, MOSFET)}{3}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Hydraulický okruh}{3}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Architektúra systému}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}UML diagram}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Popis komunikačných protokolov}{3}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Identifikácia systému}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Postup merania skokovej odozvy}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Regulácia peltier}{3}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Výpočet K,T}{3}{subsubsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.3}Regulácia pumpa}{3}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Výpočet K,T}{3}{subsubsection.4.3.1}%
+\contentsline {section}{\numberline {5}Návrh regulátora}{3}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Mód 1 - návrh PID pre TEC}{3}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Mód 2 - návrh PID pre pumpu}{3}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Výsledné parametre}{3}{subsection.5.3}%
+\contentsline {section}{\numberline {6}ESP32 firmware}{3}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Popis kódu}{3}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}PWM konfigurácia}{3}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Implementácia PID}{3}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}MQTT komunikácia}{3}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Bezpečnostné prvky (saturácia, anti-windup)}{3}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Backend - Raspberry Pi}{3}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Flask + SocketIO}{3}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}MQTT broker (Mosquitto)}{3}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}SQL databáza}{3}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}CSV + JSON archivácia}{3}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Thingsboard integrácia}{3}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Frontend - Webový dashboard}{3}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Popis funkcií (Open/Start/Stop/Close)}{3}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Grafy}{3}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Ciferníky}{3}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Tabuľka meraní}{3}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}PID Panel}{3}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Dashboard}{3}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Výsledky merania}{3}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Graf regulácie Mód 2}{3}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Graf regulácie Mód 3}{3}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Zhodnotenie kvality regulácie}{3}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Porovnanie módov}{3}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Používateľská príručka}{3}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Spustenie systému (krok za krokom)}{3}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Popis tlačidiel dashboardu}{3}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Nastavenie PID parametrov}{3}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Export dát}{3}{subsection.10.4}%
+\contentsline {section}{\numberline {11}Vývojárska príručka}{3}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Štruktúra repozitára (GitHub link)}{3}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Inštalácia závislostí}{3}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Konfigurácia (WiFi, MQTT, port)}{3}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Spustenie backendu}{3}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Záver}{3}{section.12}%
+\contentsline {section}{\numberline {13}Zoznam literatúry}{3}{section.13}%
+\contentsline {section}{\numberline {14}Body zadania}{3}{section.14}%
+\contentsline {section}{\numberline {15}Výsledky simulácie}{3}{section.15}%
+\contentsline {section}{\numberline {16}Záver}{3}{section.16}%
