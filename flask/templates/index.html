@@ -96,7 +96,7 @@
         }
 
         .role-badge.operator { border-color: var(--accent-blue); color: var(--accent-blue); background: color-mix(in srgb, var(--accent-blue) 10%, transparent); }
-        .role-badge.spektator { border-color: var(--accent-purple); color: var(--accent-purple); background: color-mix(in srgb, var(--accent-purple) 10%, transparent); }
+        .role-badge.spectator { border-color: var(--accent-purple); color: var(--accent-purple); background: color-mix(in srgb, var(--accent-purple) 10%, transparent); }
 
         .theme-toggle {
             width: 36px; height: 36px; border-radius: 8px;
@@ -188,13 +188,23 @@
             color: var(--text-label); margin-bottom: 10px;
         }
 
-        .card-value { font-size: 2.2rem; font-weight: 700; color: var(--text); line-height: 1; }
+        .card-value { font-size: 2.2rem; font-weight: 700; line-height: 1; }
         .card-value .unit { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
 
         .card-accent-blue   { border-top: 3px solid var(--accent-blue); }
         .card-accent-orange { border-top: 3px solid var(--accent-orange); }
         .card-accent-green  { border-top: 3px solid var(--accent-green); }
         .card-accent-purple { border-top: 3px solid var(--accent-purple); }
+        .card-accent-red    { border-top: 3px solid var(--accent-red); }
+
+        /* Farebné hodnoty kariet – zosúladené s cíferníkmi */
+        .card-accent-blue   .card-value { color: var(--accent-blue); }
+        .card-accent-orange .card-value { color: var(--accent-orange); }
+        .card-accent-green  .card-value { color: var(--accent-green); }
+        .card-accent-purple .card-value { color: var(--accent-purple); }
+        .card-accent-red    .card-value { color: var(--accent-red); }
+        /* Jednotky zostávajú tlmené */
+        .card-value .unit { font-size: 1rem; font-weight: 400; color: var(--text-muted) !important; }
 
         .grid-2 {
             display: grid; grid-template-columns: 2fr 1fr;
@@ -362,7 +372,7 @@
         </div>
         <!-- Rola používateľa -->
         <span class="role-badge {{ role }}">
-            {{ '👁 Spektátor' if role == 'spektator' else '⚙ Operátor' }}
+            {{ '👁 Spektátor' if role == 'spectator' else '⚙ Operátor' }}
         </span>
         <button class="theme-toggle" onclick="toggleTheme()">
             <span id="theme-icon">☀</span>
@@ -372,7 +382,7 @@
 </div>
 
 <!-- Spektátor banner -->
-{% if role == 'spektator' %}
+{% if role == 'spectator' %}
 <div class="spektator-banner" style="display:block;">
     👁 Prihlásený ako spektátor – ovládanie nie je dostupné
 </div>
@@ -402,21 +412,22 @@
             <div class="card-label">Teplota</div>
             <div class="card-value" id="val-temp">--<span class="unit"> °C</span></div>
         </div>
-        <div class="card card-accent-orange">
+        <div class="card card-accent-red">
             <div class="card-label">Setpoint</div>
             <div class="card-value" id="val-setpoint">--<span class="unit"> °C</span></div>
         </div>
-        <div class="card card-accent-green">
+        <div class="card card-accent-orange">
             <div class="card-label">TEC PWM</div>
             <div class="card-value" id="val-pwm">--<span class="unit"> /255</span></div>
         </div>
-        <div class="card card-accent-purple">
+        <div class="card card-accent-green">
             <div class="card-label">Pumpa PWM</div>
             <div class="card-value" id="val-pump">--<span class="unit"> /255</span></div>
         </div>
     </div>
 
     <!-- GRAF + OVLÁDANIE -->
+    {% if role == 'operator' %}
     <div class="grid-2">
         <div class="panel">
             <div class="panel-title">Priebeh merania</div>
@@ -427,29 +438,24 @@
             <div class="panel-title">Režim</div>
 
             <div class="mode-grid">
-                <button class="mode-btn" id="btn-mode1" onclick="setMode('MODE1')"
-                    {% if role == 'spektator' %}disabled{% endif %}>
+                <button class="mode-btn" id="btn-mode1" onclick="setMode('MODE1')">
                     Mód 1
                     <span class="mode-tag">Manuálne PWM</span>
                 </button>
-                <button class="mode-btn" id="btn-mode2" onclick="setMode('MODE2')"
-                    {% if role == 'spektator' %}disabled{% endif %}>
+                <button class="mode-btn" id="btn-mode2" onclick="setMode('MODE2')">
                     Mód 2
                     <span class="mode-tag">PID – TEC</span>
                 </button>
-                <button class="mode-btn" id="btn-mode3" onclick="setMode('MODE3')"
-                    {% if role == 'spektator' %}disabled{% endif %}>
+                <button class="mode-btn" id="btn-mode3" onclick="setMode('MODE3')">
                     Mód 3
                     <span class="mode-tag">PID – Pumpa</span>
                 </button>
-                <button class="mode-btn" id="btn-stop" onclick="setMode('STOP')"
-                    {% if role == 'spektator' %}disabled{% endif %}>
+                <button class="mode-btn" id="btn-stop" onclick="setMode('STOP')">
                     Stop
                     <span class="mode-tag">Vypnúť výstupy</span>
                 </button>
             </div>
 
-            {% if role == 'operator' %}
             <div class="subpanel" id="panel-mode1">
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;
                             background:color-mix(in srgb,var(--accent-orange) 10%,transparent);
@@ -508,9 +514,14 @@
                     <button class="btn" onclick="loadRecommended()">Odporúčané</button>
                 </div>
             </div>
-            {% endif %}
         </div>
     </div>
+    {% else %}
+    <div class="panel" style="margin-bottom: 24px;">
+        <div class="panel-title">Priebeh merania</div>
+        <canvas id="chart"></canvas>
+    </div>
+    {% endif %}
 
     <!-- CÍFERNÍKY -->
     <div class="gauge-section">
@@ -609,7 +620,10 @@
     let sysInit     = false;
     let sysRunning  = false;
     let lastTemp = 0, lastPwm = 0, lastPump = 0;
-    const MAX_TABLE_ROWS = 50;
+    const MAX_TABLE_ROWS = 20;
+
+    // Lokálna kópia PID parametrov (setpoint potrebujeme pri načítaní histórie)
+    let pid_params_cache = { setpoint: 21.0, Kp: 103.8135, Ki: 0.051495, Kd: 0.0 };
 
     socket.on('connect',    () => setStatus('Pripojený', 'ok'));
     socket.on('disconnect', () => setStatus('Odpojený', ''));
@@ -622,15 +636,20 @@
         document.getElementById('val-pwm').innerHTML      = `${d.pwm}<span class="unit"> /255</span>`;
         document.getElementById('val-pump').innerHTML     = `${d.pump}<span class="unit"> /255</span>`;
 
-        addData(d.time_s, d.temp, d.pwm, d.setpoint);
+        addData(d.time_s, d.temp, d.pwm, d.pump, d.setpoint, d.mode);
         updateGauges(d.temp, d.pwm, d.pump);
         addTableRow(d.time_s, d.temp, d.pwm, d.pump, d.mode);
     });
 
     socket.on('system_status', (s) => {
+        const wasRunning = sysRunning;
         sysInit    = s.initialized;
         sysRunning = s.running;
         updateSysUI();
+        // Pri prvom OPEN (prechod na initialized) automaticky aktivuj Mode 1 UI
+        if (s.initialized && !s.running && currentMode === 'STOP') {
+            setMode('MODE1');
+        }
     });
 
     socket.on('recommended_pid', (p) => {
@@ -638,6 +657,27 @@
         document.getElementById('inp-kp').value = p.Kp;
         document.getElementById('inp-ki').value = p.Ki;
         document.getElementById('inp-kd').value = p.Kd;
+    });
+
+    socket.on('pid_updated', (p) => {
+        pid_params_cache = p;
+    });
+
+    socket.on('pid_error', (e) => {
+        document.getElementById('modal-title').innerText = '⚠ Neplatný setpoint';
+        document.getElementById('modal-text').innerText  = e.message;
+        document.getElementById('modal-overlay').classList.add('visible');
+        document.getElementById('modal-confirm').innerText = 'OK';
+        document.getElementById('modal-confirm').onclick = closeModal;
+        document.getElementById('modal-cancel').style.display = 'none';
+        // Po zatvorení obnov tlačidlo Zrušiť
+        const origClose = closeModal;
+        closeModal = function() {
+            document.getElementById('modal-cancel').style.display = '';
+            document.getElementById('modal-confirm').innerText = 'Potvrdiť';
+            origClose();
+            closeModal = origClose;
+        };
     });
 
     // =============================================
@@ -706,15 +746,16 @@
             if (mode === 'MODE1') {
                 document.getElementById('panel-mode1')?.classList.add('visible');
                 setStatus('Mód 1 – manuálne PWM', 'mode1');
+                updateChartPwmDataset('MODE1');
                 applyMode1();
             } else if (mode === 'MODE2') {
                 document.getElementById('panel-pid')?.classList.add('visible');
-                setStatus('Mód 2 – PID regulácia TEC', 'mode2');
-                socket.emit('command', { cmd: 'MODE2' });
+                setStatus('Mód 2 – nastavte setpoint a stlačte Použiť PID', 'mode2');
+                updateChartPwmDataset('MODE2');
             } else if (mode === 'MODE3') {
                 document.getElementById('panel-pid')?.classList.add('visible');
-                setStatus('Mód 3 – PID regulácia pumpy', 'mode3');
-                socket.emit('command', { cmd: 'MODE3' });
+                setStatus('Mód 3 – nastavte setpoint a stlačte Použiť PID', 'mode3');
+                updateChartPwmDataset('MODE3');
             } else {
                 setStatus('Výstupy zastavené', 'stop');
                 socket.emit('command', { cmd: 'STOP' });
@@ -770,11 +811,29 @@
             .then(r => r.json())
             .then(rows => {
                 chart.data.datasets.forEach(ds => ds.data = []);
+                pwmTecHistory.length  = 0;
+                pwmPumpHistory.length = 0;
                 document.getElementById('table-body').innerHTML = '';
+
+                const GAP_THRESHOLD_S = 5.0;   // medzera väčšia ako 5 s = prerušenie čiary
+                let prevTime = null;
+
                 rows.forEach(r => {
-                    addData(r.time_ms / 1000.0, r.temp_C, r.tec_pwm, 21);
-                    addTableRow(r.time_ms / 1000.0, r.temp_C, r.tec_pwm, r.pump_pwm, r.mode);
+                    const t = r.time_ms / 1000.0;
+                    // Vloží null-bod ak je väčšia medzera (graf nebude spojitý)
+                    if (prevTime !== null && (t - prevTime) > GAP_THRESHOLD_S) {
+                        chart.data.datasets[0].data.push({ x: t, y: null });
+                        chart.data.datasets[1].data.push({ x: t, y: null });
+                        chart.data.datasets[2].data.push({ x: t, y: null });
+                    }
+                    prevTime = t;
+
+                    // Setpoint nie je uložený v DB – použijeme aktuálny
+                    addData(t, r.temp_C, r.tec_pwm, r.pump_pwm, pid_params_cache.setpoint, r.mode);
+                    addTableRow(t, r.temp_C, r.tec_pwm, r.pump_pwm, r.mode);
                 });
+
+                chart.update();
                 setStatus(`Načítaných ${rows.length} záznamov`, 'ok');
             });
     }
@@ -816,6 +875,14 @@
     const MAX_POINTS = 300;
     const ctx = document.getElementById('chart').getContext('2d');
 
+    // Paralelné polia pre oba PWM signály – základ pre prepínanie modu
+    const pwmTecHistory  = [];   // { x, y } pre TEC PWM
+    const pwmPumpHistory = [];   // { x, y } pre Pump PWM
+
+    // Datasety: 0=Teplota, 1=Setpoint, 2=PWM TEC, 3=PWM Pumpa
+    // Mode 1: skryť Setpoint, zobraziť TEC aj Pumpa
+    // Mode 2: zobraziť Setpoint + TEC, skryť Pumpa
+    // Mode 3: zobraziť Setpoint + Pumpa, skryť TEC
     const chart = new Chart(ctx, {
         data: {
             datasets: [
@@ -824,17 +891,26 @@
                     data: [], borderColor: '#4f9cf9',
                     backgroundColor: 'rgba(79,156,249,0.06)',
                     borderWidth: 2, pointRadius: 0, yAxisID: 'y1', tension: 0.3,
+                    spanGaps: false,
                 },
                 {
                     type: 'line', label: 'Setpoint [°C]',
                     data: [], borderColor: '#f43f5e',
                     borderWidth: 1.5, borderDash: [5, 4],
                     pointRadius: 0, yAxisID: 'y1', tension: 0,
+                    spanGaps: false,
                 },
                 {
                     type: 'line', label: 'PWM TEC',
                     data: [], borderColor: '#f97316',
                     borderWidth: 2, pointRadius: 0, yAxisID: 'y2', tension: 0,
+                    spanGaps: false,
+                },
+                {
+                    type: 'line', label: 'PWM Pumpa',
+                    data: [], borderColor: '#22c55e',
+                    borderWidth: 2, pointRadius: 0, yAxisID: 'y2', tension: 0,
+                    spanGaps: false,
                 }
             ]
         },
@@ -852,21 +928,59 @@
                     ticks: { color: '#4f9cf9' }, grid: { color: '#1e2235' }, position: 'left'
                 },
                 y2: {
-                    title: { display: true, text: 'PWM TEC', color: '#f97316' },
+                    title: { display: true, text: 'PWM', color: '#f97316' },
                     ticks: { color: '#f97316' }, grid: { drawOnChartArea: false },
                     position: 'right', min: 0, max: 255
                 }
             },
-            plugins: { legend: { labels: { color: '#9196b0' } } }
+            plugins: { legend: { labels: {
+                color: '#9196b0',
+                filter: (item, data) => !data.datasets[item.datasetIndex].hidden
+            } } }
         }
     });
 
-    function addData(time_s, temp, pwm, setpoint) {
+    // Nastaví viditeľnosť datasetov a synchronizuje historické dáta podľa modu
+    function updateChartPwmDataset(mode) {
+        // Spektátor vidí vždy všetky 4 veličiny – žiadne skrývanie
+        if (!IS_OPERATOR) {
+            chart.data.datasets[2].data = [...pwmTecHistory];
+            chart.data.datasets[3].data = [...pwmPumpHistory];
+            chart.update('none');
+            return;
+        }
+
+        const isMode1 = (mode === 'MODE1');
+        const isMode3 = (mode === 'MODE3');
+
+        // Setpoint: skryť v Mode 1
+        chart.data.datasets[1].hidden = isMode1;
+        // PWM TEC (ds2): viditeľný v Mode 1 a Mode 2, skrytý v Mode 3
+        chart.data.datasets[2].hidden = isMode3;
+        chart.data.datasets[2].data   = [...pwmTecHistory];
+        // PWM Pumpa (ds3): viditeľný len v Mode 1 a Mode 3
+        chart.data.datasets[3].hidden = !isMode1 && !isMode3;
+        chart.data.datasets[3].data   = [...pwmPumpHistory];
+
+        chart.update('none');
+    }
+
+    function addData(time_s, temp, pwm_tec, pwm_pump, setpoint, mode) {
+        // Ukladaj oba PWM signály vždy paralelne
+        pwmTecHistory.push({ x: time_s, y: pwm_tec });
+        pwmPumpHistory.push({ x: time_s, y: pwm_pump });
+        if (pwmTecHistory.length  > MAX_POINTS) pwmTecHistory.shift();
+        if (pwmPumpHistory.length > MAX_POINTS) pwmPumpHistory.shift();
+
+        const m = mode || currentMode;
         chart.data.datasets[0].data.push({ x: time_s, y: temp });
         chart.data.datasets[1].data.push({ x: time_s, y: setpoint });
-        chart.data.datasets[2].data.push({ x: time_s, y: pwm });
+        chart.data.datasets[2].data.push({ x: time_s, y: pwm_tec });
+        chart.data.datasets[3].data.push({ x: time_s, y: pwm_pump });
+
         if (chart.data.datasets[0].data.length > MAX_POINTS)
             chart.data.datasets.forEach(ds => ds.data.shift());
+
         chart.update();
     }
 
@@ -878,7 +992,7 @@
         chart.options.scales.y1.grid.color = grid;
         chart.options.scales.x.ticks.color  = muted;
         chart.options.scales.y1.ticks.color = '#4f9cf9';
-        chart.options.scales.y2.ticks.color = '#f97316';
+        // y2 farbu neprepisujeme – riadi ju updateChartPwmDataset podľa modu
         chart.options.plugins.legend.labels.color = muted;
         chart.update();
     }
@@ -933,6 +1047,8 @@
     // Inicializácia
     updateSysUI();
     updateGauges(0, 0, 0);
+    // Nastavenie počiatočnej viditeľnosti datasetov
+    updateChartPwmDataset(IS_OPERATOR ? 'MODE1' : 'ALL');
 </script>
 
 </body>

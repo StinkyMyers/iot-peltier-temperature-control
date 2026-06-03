@@ -5,6 +5,8 @@ from functools import wraps
 import csv
 import os
 import json
+import signal
+import atexit
 import paho.mqtt.client as mqtt
 from datetime import datetime
 
@@ -33,7 +35,7 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 # =============================================
 USERS = {
     'operator':  {'password': 'Pelt1er2026POIT', 'role': 'operator'},
-    'spectator': {'password': '',                 'role': 'spectator'},
+    'spectator': {'password': 'spectator123',    'role': 'spectator'},
 }
 
 # =============================================
@@ -264,8 +266,19 @@ def handle_command(data):
             send_to_esp('PID')
 
     elif cmd == 'SET_PID':
+        new_setpoint = float(data.get('setpoint', 21.0))
+        # Získame poslednú nameranú teplotu z DB
+        with app.app_context():
+            last = Measurement.query.order_by(Measurement.id.desc()).first()
+            if last and new_setpoint > last.temp_C:
+                socketio.emit('pid_error', {
+                    'message': f'Setpoint ({new_setpoint:.1f} °C) nesmie byť vyšší '
+                               f'ako aktuálna teplota ({last.temp_C:.2f} °C). '
+                               f'Systém môže iba chladiť.'
+                })
+                return
         pid_params.update({
-            'setpoint': float(data.get('setpoint', 21.0)),
+            'setpoint': new_setpoint,
             'Kp':       float(data.get('Kp', 103.8135)),
             'Ki':       float(data.get('Ki', 0.051495)),
             'Kd':       float(data.get('Kd', 0.0)),
@@ -353,6 +366,30 @@ def download_json():
         with open(JSON_FILE, 'w') as f:
             json.dump(data, f, indent=2)
     return send_file(JSON_FILE, as_attachment=True)
+
+# =============================================
+# GRACEFUL SHUTDOWN – STOP pri akomkoľvek vypnutí
+# =============================================
+def _shutdown_send_stop():
+    """Pošle STOP príkaz na ESP32 pri ukončení procesu."""
+    try:
+        print(">> Shutdown: posielam STOP na ESP32...")
+        if esp_connected:
+            esp_client.publish(MQTT_TOPIC_CMD, 'STOP')
+            import time; time.sleep(0.3)   # krátka pauza aby správa odišla
+        print(">> Shutdown: STOP odoslaný")
+    except Exception as e:
+        print(f">> Shutdown STOP chyba: {e}")
+
+atexit.register(_shutdown_send_stop)
+
+def _signal_handler(signum, frame):
+    print(f">> Signál {signum} prijatý – ukončujem...")
+    _shutdown_send_stop()
+    os._exit(0)
+
+signal.signal(signal.SIGTERM, _signal_handler)
+signal.signal(signal.SIGINT,  _signal_handler)
 
 # =============================================
 # ŠTART
