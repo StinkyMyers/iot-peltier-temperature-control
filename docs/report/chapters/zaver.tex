@@ -13,7 +13,8 @@ komunikáciu v reálnom čase medzi serverom a prehliadačom bez nutnosti opakov
 HTTP požiadaviek.
 
 Server počúva na porte \texttt{5000} a je nakonfigurovaný pre viacvláknový asynchrónny
-režim (\texttt{async\_mode='threading'}), čo umožňuje súbežné spracovanie MQTT správ
+režim ..
+(\texttt{async\_mode='threading'}), čo umožňuje súbežné spracovanie MQTT správ
 a WebSocket udalostí.
 
 Kľúčové SocketIO udalosti:
@@ -100,6 +101,44 @@ CSV súbor obsahuje stĺpce: \texttt{time\_ms, temp\_C, tec\_pwm, pump\_pwm, mod
 JSON súbor obsahuje rovnaké polia vo forme poľa objektov s kľúčom \texttt{ts} pre
 časovú pečiatku. Exportovaný súbor je vrátený ako príloha (\texttt{as\_attachment=True}),
 čo umožňuje jeho priame stiahnutie z prehliadača.
+
+\subsection{Export dát a zobrazenie historických grafov}
+
+Dashboard obsahuje sekciu \textbf{Export \& História}, ktorá umožňuje spätne načítať
+namerané dáta z databázy a exportovať ich pre ďalšie spracovanie.
+
+Používateľ najprv zvolí časové obdobie pomocou tlačidiel \emph{1\,h}, \emph{2\,h},
+\emph{6\,h}, \emph{24\,h}, prípadne zadá ľubovoľný počet hodín do číselného poľa.
+Tlačidlo \emph{Všetko} zruší časové obmedzenie a zahrnie celú históriu v databáze.
+Zvolené obdobie sa následne prenáša ako parameter \texttt{hours} do všetkých
+backendových endpointov.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/Export_a_historia.png}
+    \caption{Sekcia Export \& História – výber časového obdobia a možnosti exportu}
+    \label{fig:export_historia}
+\end{figure}
+
+Backend poskytuje tri endpointy chránené prihlásením:
+
+\begin{itemize}
+    \item \texttt{GET /api/history?hours=\textit{N}} – vráti JSON pole
+          posledných až 5\,000 záznamov z SQLite databázy za zvolené obdobie.
+          Každý záznam obsahuje čas merania, teplotu, TEC PWM, pumpa PWM,
+          aktívny mód a setpoint.
+    \item \texttt{GET /api/download/csv?hours=\textit{N}} – vygeneruje a odošle
+          CSV súbor s rovnakými stĺpcami vrátane strojového časového razítka
+          (\texttt{created}). Názov súboru obsahuje časový rozsah
+          a momentálny dátum, napr. \texttt{export\_last1h\_20250530\_143000.csv}.
+    \item \texttt{GET /api/download/json?hours=\textit{N}} – rovnaký obsah
+          vo formáte JSON s odsadením pre čitateľnosť.
+\end{itemize}
+
+Tlačidlom \textbf{Načítať do grafu} sa zavolá endpoint \texttt{/api/history}
+a získané záznamy sa vykreslia do existujúceho grafu \emph{Priebeh merania}
+na hlavnej stránke dashboardu, čo umožňuje porovnávať historické priebehy
+teploty a PWM hodnôt bez nutnosti spustiť nové meranie.
 
 \subsection{ThingsBoard integrácia}
 
@@ -203,7 +242,7 @@ reprezentáciu aktuálnych hodnôt.
 
 \subsection{Tabuľka meraní}
 
-Dashboard obsahuje tabuľku posledných 50 meraní. Každý riadok zobrazuje čas merania,
+Dashboard obsahuje tabuľku posledných 20 meraní. Každý riadok zobrazuje čas merania,
 teplotu, TEC PWM, pumpa PWM a aktívny mód. Tabuľka je aktualizovaná v reálnom čase
 pri každom príchode WebSocket správy.
 
@@ -246,6 +285,55 @@ je informovaný o aktuálnom stave systému prostredníctvom:
 
 Rozhranie pre rolu \textit{spectator} je identické, no všetky ovládacie prvky
 (tlačidlá, posúvače, PID polia) sú deaktivované.
+
+\subsection{Bonusové mobilné UI}
+
+Webový dashboard je plne responzívny a prispôsobený pre používanie na mobilných zariadeniach.
+Pri šírke obrazovky do 768\,px sa aktivuje mobilné rozloženie: hlavná dvojstĺpcová plocha
+sa zjednoduší na jednoduché karty a v spodnej časti obrazovky sa zobrazí fixná
+navigačná lišta s ikonami.
+
+Spodná navigácia obsahuje štyri záložky, medzi ktorými sa prepína funkciou \texttt{mobileTab()}
+implementovanou priamo v JavaScripte frontendu:
+
+\begin{itemize}
+    \item \textbf{Live} – zobrazuje aktuálne hodnoty teploty, setpointu, TEC PWM a pumpy PWM
+          v prehľadných kartách spolu s grafom priebehu merania (obr.~\ref{fig:mob_live}),
+    \item \textbf{Ovládanie} – panel pre výber režimu (Mód 1--3, Stop) a zadanie parametrov
+          setpointu a PID regulátora vrátane tlačidiel \emph{Použiť PID} a \emph{Odporúčané}
+          (obr.~\ref{fig:mob_ovladanie}),
+    \item \textbf{História} – tabuľka posledných meraní a sekcia Export \& História
+          s výberom časového obdobia, načítaním dát do grafu a stiahnutím CSV súboru
+          (obr.~\ref{fig:mob_historia}),
+    \item \textbf{Meranie} – analógové ciferníky teploty, TEC PWM a pumpy PWM vykreslené
+          pomocou natívneho HTML5 Canvas API.
+\end{itemize}
+
+Na mobilnom zariadení je v danom momente zobrazená vždy len aktívna záložka
+(\texttt{display: block}), ostatné sú skryté (\texttt{display: none}), čím sa
+eliminuje zbytočné rolovanie a zachováva sa prehľadnosť rozhrania.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Mobil_UI_live.PNG}
+        \caption{Mobilné UI: \\ záložka Live}
+        \label{fig:mob_live}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Mobil_UI_ovladanie.PNG}
+        \caption{Mobilné UI: \\ záložka Ovládanie}
+        \label{fig:mob_ovladanie}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Mobil_UI_historia.PNG}
+        \caption{Mobilné UI: \\ záložka História}
+        \label{fig:mob_historia}
+    \end{minipage}
+\end{figure}
 
 \section{Výsledky merania}
 
@@ -401,11 +489,21 @@ const char* MQTT_SERVER = "147.175.105.185";
 
 \subsection{Spustenie backendu}
 
+Backend je nakonfigurovaný ako systemd služba, ktorá sa automaticky spustí po štarte Raspberry Pi.
+
 \begin{verbatim}
-ssh misa26@147.175.105.185
+# Spustenie
 sudo systemctl start mosquitto
-cd ~/peltier && python3 app.py
+sudo systemctl start peltier
+
+# Zastavenie
+sudo systemctl stop peltier
+
+# Stav
+sudo systemctl status peltier
 \end{verbatim}
+
+Dashboard je následne dostupný na \texttt{http://147.175.105.185:5000}.
 
 \section{Záver}
 
