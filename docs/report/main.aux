@@ -39,68 +39,75 @@
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:odozva_peltier}{{3}{8}{Priebeh odozvy teploty na skokovú zmenu výkonu Peltierovho článku}{figure.caption.9}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Výpočet parametrov $K$ a $T$}{8}{subsubsection.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Regulácia čerpadla}{8}{subsection.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Priebeh odozvy teploty na skokovú zmenu výkonu čerpadla}}{9}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:odozva_pumpa}{{4}{9}{Priebeh odozvy teploty na skokovú zmenu výkonu čerpadla}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Výpočet statického zosilnenia $K$}{9}{subsubsection.4.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Priebeh odozvy systému použitý na identifikáciu}}{10}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:ident_priebeh}{{5}{10}{Priebeh odozvy systému použitý na identifikáciu}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Výpočet časovej konštanty $T$ a dopravného oneskorenia $T_d$}{10}{subsubsection.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Výsledný model a verifikácia}{11}{subsubsection.4.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Porovnanie nameranej odozvy reálneho systému s identifikovaným modelom}}{11}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:model_vs_data}{{6}{11}{Porovnanie nameranej odozvy reálneho systému s identifikovaným modelom}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Návrh regulátora}{11}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Mód 2 - návrh PID pre TEC}{12}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Mód 3 - návrh PID pre pumpu}{12}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Simulačná schéma a overenie}{12}{subsubsection.5.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Simulačná schéma uzavretého regulačného obvodu s modelovaním poruchy}}{13}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:sim_schema}{{7}{13}{Simulačná schéma uzavretého regulačného obvodu s modelovaním poruchy}{figure.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Prechodová charakteristika uzavretého regulačného obvodu (regulovaná teplota)}}{13}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:sim_teplota}{{8}{13}{Prechodová charakteristika uzavretého regulačného obvodu (regulovaná teplota)}{figure.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Priebeh akčného zásahu regulátora (PWM signál čerpadla)}}{14}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:sim_zasah}{{9}{14}{Priebeh akčného zásahu regulátora (PWM signál čerpadla)}{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Výsledné parametre}{14}{subsection.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}ESP32 firmware}{14}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Popis kódu}{14}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}PWM konfigurácia}{15}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Implementácia PID}{15}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}MQTT komunikácia}{15}{subsection.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Bezpečnostné prvky (saturácia, anti-windup)}{15}{subsection.6.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Backend - Raspberry Pi}{15}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Flask + SocketIO}{15}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}MQTT broker (Mosquitto)}{16}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}SQL databáza}{17}{subsection.7.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Štruktúra tabuľky \texttt  {Measurement} v SQLite databáze}}{17}{table.caption.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}CSV + JSON archivácia}{17}{subsection.7.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Thingsboard integrácia}{17}{subsection.7.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}Frontend - Webový dashboard}{18}{section.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Prihlasovacia stránka -- Peltier Control IoT Dashboard}}{18}{figure.caption.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Popis funkcií (Open/Start/Stop/Close)}{18}{subsection.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Grafy}{19}{subsection.8.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Dashboard v Móde 1 (manuálne PWM) -- priebeh merania s grafom teploty a PWM}}{19}{figure.caption.18}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Dashboard v Móde 2 (PID -- TEC) -- regulácia TEC PWM s viditeľným skokom setpointu}}{20}{figure.caption.19}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Dashboard v Móde 3 (PID -- Pumpa) -- regulácia prietoku pumpy}}{20}{figure.caption.20}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Ciferníky}{20}{subsection.8.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Analógové ciferníky -- teplota, TEC PWM a Pumpa PWM}}{21}{figure.caption.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Tabuľka meraní}{21}{subsection.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}PID Panel}{21}{subsection.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}Dashboard}{21}{subsection.8.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9}Výsledky merania}{22}{section.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Graf regulácie Mód 2}{22}{subsection.9.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Graf regulácie Mód 3}{22}{subsection.9.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Zhodnotenie kvality regulácie}{22}{subsection.9.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Porovnanie módov}{22}{subsection.9.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10}Používateľská príručka}{22}{section.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Spustenie systému (krok za krokom)}{22}{subsection.10.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Popis tlačidiel dashboardu}{22}{subsection.10.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Nastavenie PID parametrov}{22}{subsection.10.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Export dát}{22}{subsection.10.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11}Vývojárska príručka}{22}{section.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Štruktúra repozitára (GitHub link)}{22}{subsection.11.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Inštalácia závislostí}{22}{subsection.11.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.3}Konfigurácia (WiFi, MQTT, port)}{22}{subsection.11.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.4}Spustenie backendu}{22}{subsection.11.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {12}Záver}{22}{section.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {13}Zoznam literatúry}{22}{section.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Regulácia čerpadla}{9}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Priebeh odozvy teploty na skokovú zmenu výkonu čerpadla}}{10}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:odozva_pumpa}{{4}{10}{Priebeh odozvy teploty na skokovú zmenu výkonu čerpadla}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Výpočet statického zosilnenia $K$}{10}{subsubsection.4.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Priebeh odozvy systému použitý na identifikáciu}}{11}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:ident_priebeh}{{5}{11}{Priebeh odozvy systému použitý na identifikáciu}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Výpočet časovej konštanty $T$ a dopravného oneskorenia $T_d$}{11}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Výsledný model a verifikácia}{12}{subsubsection.4.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Porovnanie nameranej odozvy reálneho systému s identifikovaným modelom}}{12}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:model_vs_data}{{6}{12}{Porovnanie nameranej odozvy reálneho systému s identifikovaným modelom}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Návrh regulátora}{12}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Mód 2 -- návrh PID pre TEC}{13}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Simulačná schéma a overenie}{13}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Prechodová charakteristika uzavretého regulačného obvodu -- Mód 2 (TEC)}}{13}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:sim_teplota_tec}{{7}{13}{Prechodová charakteristika uzavretého regulačného obvodu -- Mód 2 (TEC)}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Priebeh akčného zásahu PID regulátora -- Mód 2 (TEC)}}{14}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:sim_zasah_tec}{{8}{14}{Priebeh akčného zásahu PID regulátora -- Mód 2 (TEC)}{figure.caption.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Parametre PID regulátora pre Mód 2 (regulácia TEC)}}{14}{table.caption.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Mód 3 -- návrh PID pre pumpu}{14}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Simulačná schéma a overenie}{15}{subsubsection.5.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Simulačná schéma uzavretého regulačného obvodu s modelovaním poruchy}}{15}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:sim_schema}{{9}{15}{Simulačná schéma uzavretého regulačného obvodu s modelovaním poruchy}{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Prechodová charakteristika uzavretého regulačného obvodu (regulovaná teplota)}}{16}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:sim_teplota}{{10}{16}{Prechodová charakteristika uzavretého regulačného obvodu (regulovaná teplota)}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Priebeh akčného zásahu regulátora (PWM signál čerpadla)}}{17}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:sim_zasah}{{11}{17}{Priebeh akčného zásahu regulátora (PWM signál čerpadla)}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Výsledné parametre}{17}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Výsledné parametre identifikácie a regulátorov pre oba módy}}{17}{table.caption.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}ESP32 firmware}{18}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Popis kódu}{18}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}PWM konfigurácia}{18}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Implementácia PID}{18}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}MQTT komunikácia}{18}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Bezpečnostné prvky (saturácia, anti-windup)}{18}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Backend - Raspberry Pi}{19}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Flask + SocketIO}{19}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}MQTT broker (Mosquitto)}{19}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}SQL databáza}{20}{subsection.7.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Štruktúra tabuľky \texttt  {Measurement} v SQLite databáze}}{20}{table.caption.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}CSV + JSON archivácia}{20}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Thingsboard integrácia}{21}{subsection.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Frontend - Webový dashboard}{21}{section.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Prihlasovacia stránka -- Peltier Control IoT Dashboard}}{21}{figure.caption.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Popis funkcií (Open/Start/Stop/Close)}{21}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Grafy}{22}{subsection.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Dashboard v Móde 1 (manuálne PWM) -- priebeh merania s grafom teploty a PWM}}{22}{figure.caption.22}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Dashboard v Móde 2 (PID -- TEC) -- regulácia TEC PWM s viditeľným skokom setpointu}}{23}{figure.caption.23}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Dashboard v Móde 3 (PID -- Pumpa) -- regulácia prietoku pumpy}}{23}{figure.caption.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Ciferníky}{23}{subsection.8.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Analógové ciferníky -- teplota, TEC PWM a Pumpa PWM}}{24}{figure.caption.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Tabuľka meraní}{24}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}PID Panel}{24}{subsection.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}Dashboard}{24}{subsection.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Výsledky merania}{25}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Graf regulácie Mód 2}{25}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Graf regulácie Mód 3}{25}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Zhodnotenie kvality regulácie}{25}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Porovnanie módov}{25}{subsection.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Používateľská príručka}{25}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Spustenie systému (krok za krokom)}{25}{subsection.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Popis tlačidiel dashboardu}{25}{subsection.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Nastavenie PID parametrov}{25}{subsection.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Export dát}{25}{subsection.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}Vývojárska príručka}{25}{section.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Štruktúra repozitára (GitHub link)}{25}{subsection.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Inštalácia závislostí}{25}{subsection.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3}Konfigurácia (WiFi, MQTT, port)}{25}{subsection.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4}Spustenie backendu}{25}{subsection.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12}Záver}{25}{section.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}Zoznam literatúry}{25}{section.13}\protected@file@percent }
 \abx@aux@read@bbl@mdfivesum{E75D7E0DB03F09D45B25DF2F538BB294}
-\gdef \@abspage@last{25}
+\gdef \@abspage@last{28}

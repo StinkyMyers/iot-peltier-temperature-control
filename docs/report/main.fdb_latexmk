@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1780575742.38787 -1
-  "main.bcf" 1780575742 108631 292f1b94c2107f422a278df57247b52f "pdflatex"
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1780577854.8226 -1
+  "main.bcf" 1780577854 108631 292f1b94c2107f422a278df57247b52f "pdflatex"
   "ref.bib" 1777290439 572 22835cfc5bcfbe8f132f9bbc818fe962 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1780575740.5066 "d:/LS2026/PIOT/POIT_zadanie/iot-peltier-temperature-control/docs/report/main.tex" "main.pdf" "main" 1780575742.38853 0
+["pdflatex"] 1780577852.77718 "d:/LS2026/PIOT/POIT_zadanie/iot-peltier-temperature-control/docs/report/main.tex" "main.pdf" "main" 1780577854.82381 0
   "C:/Users/lilug/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1780573793 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/lilug/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1095.pk" 1777291752 28976 99551e0e63ce7e397632faa37796c5f9 ""
   "C:/Users/lilug/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1200.pk" 1777291703 31952 ef51df5008d0f205fba21f23a065d216 ""
@@ -218,7 +218,7 @@
   "C:/Users/lilug/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "chapters/1_uloha.tex" 1780574365 5719 53e5e252e721bc689f551b93804bd7e8 ""
   "chapters/2_uloha.tex" 1780574924 2908 d200ad7d5598089a795e6998090d05c4 ""
-  "chapters/3_uloha.tex" 1780575737 12071 928f25c9feb4ee0d63b5fded09a96911 ""
+  "chapters/3_uloha.tex" 1780577712 16177 799e112eea419f88a39e5b992fed1bf3 ""
   "chapters/4_uloha.tex" 1780574542 2294 29709ed4e5bc8a1530823839085de5cf ""
   "chapters/zaver.tex" 1780574724 11535 399f58bbae48b57919ace95146b27d6d ""
   "d:/LS2026/PIOT/POIT_zadanie/iot-peltier-temperature-control/docs/report/main.tex" 1780573777 646 4dadea00919c1054075671b012148c38 ""
@@ -235,14 +235,16 @@
   "images/priebeh_akcnyZasah_sim_cerpadlo.jpg" 1780575126 48468 96e21949cf05f0521ad1ddc6a7bd2c3f ""
   "images/priebeh_prechodovaChar_sim_cerpadlo.jpg" 1780575126 53711 7c7f0da9d466f5a6b23a898d5e5f1e75 ""
   "images/schema_zapojenia.png" 1780574032 134277 328dbfb1d069b894ea95fa837e4e44f5 ""
+  "images/sim_teplota_tec.png" 1780577845 16346 1ee584bed80eca14ff01f5cd5c4d9a7d ""
+  "images/sim_zasah_tec.png" 1780577832 19201 589ed7ab5a8ebea95f56f54ff70fdfe3 ""
   "images/simulinkSchemaPumpa.jpg" 1780575126 68926 4bd6d9239ab0c4a2b71858f4bce58468 ""
   "images/uml_diagram.png" 1780573635 327914 518cf98eebe40d37ab63b9253e4b5314 ""
-  "main.aux" 1780575742 13170 193d905777681c07c27d54cf7b7efb52 "pdflatex"
+  "main.aux" 1780577854 14314 64cdc6e1bfe438dd4e005bc43465fe27 "pdflatex"
   "main.bbl" 1777291749 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.out" 1780575742 10709 bd90400fd9c113e1e6c3ee988622d08d "pdflatex"
-  "main.run.xml" 1780575742 2297 c1fd7f476de751933b8326d5e6336700 "pdflatex"
+  "main.out" 1780577854 10936 99f50867fe5a41257b46dbfeaf237d1a "pdflatex"
+  "main.run.xml" 1780577854 2297 c1fd7f476de751933b8326d5e6336700 "pdflatex"
   "main.tex" 1780573777 646 4dadea00919c1054075671b012148c38 ""
-  "main.toc" 1780575742 5581 6b6f2da6fb9e3ecd3ead7d9b1071a4e3 "pdflatex"
+  "main.toc" 1780577854 5691 2cb32be2922d1cf9ea3a75bd1a258d26 "pdflatex"
   "reportSty.sty" 1777290439 1006 aa9a8c9582894aa75da81a9782bde987 ""
   (generated)
   "main.aux"

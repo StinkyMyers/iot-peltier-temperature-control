@@ -20,7 +20,7 @@ Prostredníctvom sériovej linky bolo možné odoslať príkazy pre tri rôzne r
 
 \subsection{Regulácia Peltierovho článku}
 
-Identifikačné meranie pri regulácii teploty vody pomocou Peltierovho článku bolo realizované nasledovne. Chladič na teplej strane Peltierovho článku bol počas celého merania zapnutý na maximálny výkon. Vodné čerpadlo bolo taktiež zapnuté konštantne s PWM plnením 50\%. Počas fázy stabilizácie bol Peltierov článok vypnutý (PWM plnenie 0\%). Po ustálení teploty na stabilnej hodnote bol realizovaný skok akčnej veličiny, pričom PWM plnenie Peltierovho článku bolo nastavené na 60\%.
+Identifikačné meranie pri regulácii teploty vody pomocou Peltierovho článku bolo realizované nasledovne. Chladič na teplej strane Peltierovho článku bol počas celého merania zapnutý na maximálny výkon. Vodné čerpadlo bolo taktiež zapnuté konštantne s PWM plnením 50\,\%. Počas fázy stabilizácie bol Peltierov článok vypnutý (PWM plnenie 0\,\%). Po ustálení teploty na stabilnej hodnote bol realizovaný skok akčnej veličiny, pričom PWM plnenie Peltierovho článku bolo nastavené na 60\,\%.
 
 Priebeh odozvy systému na skokovú zmenu výkonu Peltierovho článku je znázornený na obrázku \ref{fig:odozva_peltier}.
 
@@ -33,7 +33,29 @@ Priebeh odozvy systému na skokovú zmenu výkonu Peltierovho článku je znázo
 
 \subsubsection{Výpočet parametrov $K$ a $T$}
 
-Lea
+Skoková zmena akčného zásahu bola realizovaná zvýšením PWM plnenia Peltierovho článku z hodnoty $u_0 = 0$ na $u_\infty = 153$ (60\,\%). Teplota klesla z ustálenej počiatočnej hodnoty $y_0 = 24{,}75\,^\circ\text{C}$ na novú ustálenú hodnotu $y_\infty = 5{,}44\,^\circ\text{C}$.
+
+Statické zosilnenie $K$ bolo vypočítané priamo z nameraných hodnôt:
+\begin{equation}
+    K = \frac{\Delta y}{\Delta u} = \frac{y_\infty - y_0}{u_\infty - u_0} = \frac{5{,}44 - 24{,}75}{153 - 0} = \frac{-19{,}31}{153} \approx -0{,}1259\,^\circ\text{C/PWM}
+\end{equation}
+
+Záporná hodnota zosilnenia potvrdzuje, že zvýšenie výkonu Peltierovho článku spôsobuje pokles teploty kvapaliny.
+
+Pre určenie dynamických parametrov bola použitá \textbf{jednobodová metóda}. Teplota pri 63,2\,\% celkovej zmeny:
+\begin{equation}
+    y_{\tau} = y_0 + 0{,}632 \cdot \Delta y = 24{,}75 + 0{,}632 \cdot (-19{,}31) = 12{,}55\,^\circ\text{C}
+\end{equation}
+
+Z nameranej odozvy bol odčítaný čas $t_2 = 2055\,\text{s}$ od momentu skoku. Dopravné oneskorenie bolo stanovené na $T_d = 10{,}7\,\text{s}$. Časová konštanta:
+\begin{equation}
+    T = t_2 - T_d = 2055 - 10{,}7 = 2044{,}3\,\text{s}
+\end{equation}
+
+Výsledná prenosová funkcia identifikovaného systému:
+\begin{equation}
+    G(s) = \frac{-0{,}1259}{2044{,}3\,s + 1}\,e^{-10{,}7\,s}
+\end{equation}
 
 \subsection{Regulácia čerpadla}
 
@@ -51,6 +73,7 @@ Priebeh odozvy teploty vody v zásobníku na skokovú zmenu výkonu čerpadla je
 \end{figure}
 
 \subsubsection{Výpočet statického zosilnenia $K$}
+
 Skoková zmena akčného zásahu bola realizovaná znížením plnenia PWM čerpadla z pôvodnej hodnoty $u_0 = 179$ na $u_\infty = 75$. Zníženie prietoku spôsobilo výraznejšie ochladzovanie vody, pričom teplota klesla z ustálenej počiatočnej hodnoty $y_0 = 18.44\,^\circ\text{C}$ na novú ustálenú hodnotu $y_\infty = 12.63\,^\circ\text{C}$. Priebeh tejto skokovej odozvy orezaný na relevantnú časť pre identifikáciu je znázornený na obrázku \ref{fig:ident_priebeh}.
 
 \begin{figure}[H]
@@ -66,6 +89,7 @@ Statické zosilnenie $K$ sme vypočítali priamo z týchto fyzikálnych hodnôt:
 \end{equation}
 
 \subsubsection{Výpočet časovej konštanty $T$ a dopravného oneskorenia $T_d$}
+
 Pre určenie dynamických parametrov bola využitá \textbf{dvojbodová metóda}. Keďže reálna teplota počas merania klesala, namerané dáta boli najskôr invertované a normalizované do rozsahu $\langle 0, 1 \rangle$. Následne boli z normalizovanej odozvy odčítané časy, v ktorých výstup dosiahol $28.3\,\%$ a $63.2\,\%$ svojej ustálenej hodnoty:
 \begin{itemize}
     \item $t_1 = 1293.2\,\text{s}$ (pre $28.3\,\%$)
@@ -78,6 +102,7 @@ Na základe fyzikálneho pozorovania systému bolo dopravné oneskorenie manuál
 \end{equation}
 
 \subsubsection{Výsledný model a verifikácia}
+
 Po dosadení vypočítaných parametrov má výsledná prenosová funkcia identifikovaného systému tvar:
 \begin{equation}
     G(s) = \frac{0.0559}{2924.8 s + 1} e^{-72.0 s}
@@ -96,10 +121,52 @@ Správnosť identifikovanej prenosovej funkcie bola graficky overená v prostred
 
 Na základe matematických modelov vo forme prenosovej funkcie $G(s)$, ktoré boli odvodené v predchádzajúcej fáze identifikácie, sme pristúpili k samotnému návrhu regulátorov. Využitie tohto exaktného analytického popisu systému nám umožnilo namiesto experimentálneho ladenia metódou pokus-omyl exaktne vypočítať optimálne parametre regulátora. Cieľom návrhu bolo zabezpečiť stabilnú odozvu uzavretého regulačného obvodu, minimalizovať prekmit a dosiahnuť presné sledovanie žiadanej teploty reálneho systému.
 
-\subsection{Mód 2 - návrh PID pre TEC}
+\subsection{Mód 2 -- návrh PID pre TEC}
 
+\subsubsection{Simulačná schéma a overenie}
 
-\subsection{Mód 3 - návrh PID pre pumpu}
+Funkčnosť regulátora bola overená v prostredí Simulink. Model systému bol zapojený ako prenosová funkcia s transportným oneskorením. Parametre PID regulátora boli stanovené heuristickou metódou -- iteratívnym ladením hodnôt $K_p$, $K_i$ a $K_d$ pri pozorovaní odozvy uzavretého regulačného obvodu.
+
+Saturácia akčného zásahu bola nastavená na rozsah $\langle -255,\, 0 \rangle$, čo zodpovedá fyzikálnemu obmedzeniu PWM signálu. Záporné hodnoty reflektujú chladiaci charakter systému. Anti-windup bol implementovaný metódou \textit{clamping}.
+
+Po spustení simulácie boli zaznamenané časové priebehy regulovanej veličiny a akčného zásahu. Na obrázku \ref{fig:sim_teplota_tec} je zobrazená prechodová charakteristika uzavretého regulačného obvodu. Z grafu je zrejmé, že teplota sleduje referenčný signál a po prechodnom deji s úvodným prekmitom sa stabilne ustaľuje na žiadanej hodnote.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/sim_teplota_tec.png}
+    \caption{Prechodová charakteristika uzavretého regulačného obvodu -- Mód 2 (TEC)}
+    \label{fig:sim_teplota_tec}
+\end{figure}
+
+Na obrázku \ref{fig:sim_zasah_tec} je znázornený priebeh akčného zásahu regulátora. Regulátor na začiatku aplikuje maximálny výkon (saturácia $-255$), následne akčný zásah plynule narastá smerom k ustálenej hodnote, čo zodpovedá PWM potrebnému na udržanie žiadanej teploty.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/sim_zasah_tec.png}
+    \caption{Priebeh akčného zásahu PID regulátora -- Mód 2 (TEC)}
+    \label{fig:sim_zasah_tec}
+\end{figure}
+
+Výsledné parametre PID regulátora pre Mód 2:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|r|}
+\hline
+\textbf{Parameter} & \textbf{Hodnota} \\
+\hline
+$K_p$ & $-50{,}0$ \\
+$K_i$ & $-0{,}053$ \\
+$K_d$ & $-25{,}0$ \\
+Saturácia & $\langle -255,\, 0 \rangle$ \\
+Anti-windup & clamping \\
+\hline
+\end{tabular}
+\caption{Parametre PID regulátora pre Mód 2 (regulácia TEC)}
+\end{table}
+
+\subsection{Mód 3 -- návrh PID pre pumpu}
 
 Pre riadenie procesu chladenia bola zvolená štruktúra PI regulátora. Derivačnú zložku sme vynechali, keďže ide o pomalý tepelný systém a zosilňovanie šumu z merania by spôsobovalo nežiaduce kmitanie akčného zásahu.
 
@@ -116,6 +183,7 @@ Pre paralelný tvar regulátora sme dopočítali integračnú konštantu:
 \end{equation}
 
 \subsubsection{Simulačná schéma a overenie}
+
 Funkčnosť regulátora bola overená v prostredí Simulink (Obrázok \ref{fig:sim_schema}). Model vo forme prenosovej funkcie bol nahradený blokom stavového priestoru (\textit{State-Space}), čo umožnilo inicializovať systém na reálnu počiatočnú teplotu ($24\,^\circ\text{C}$).
 
 K výstupu dynamického modelu bol pripočítaný teplotný offset (Bias) $8.43\,^\circ\text{C}$. Táto hodnota predstavuje ustálenú teplotu pri nulovom výkone čerpadla a zabezpečuje, že regulátor pracuje v absolútnych fyzikálnych hodnotách, vďaka čomu správne reaguje na saturačné limity PWM signálu.
@@ -128,8 +196,6 @@ Na overenie robustnosti riadenia bola do schémy priamo na výstup systému prid
     \caption{Simulačná schéma uzavretého regulačného obvodu s modelovaním poruchy}
     \label{fig:sim_schema}
 \end{figure}
-
-Cieľom simulácie bolo overiť schopnosť regulátorov dosiahnuť a udržať novú žiadanú hodnotu teploty pri rešpektovaní reálnych saturačných obmedzení akčného člena.
 
 Po spustení simulácie boli zaznamenané časové priebehy regulovanej veličiny a akčného zásahu. Na obrázku \ref{fig:sim_teplota} je zobrazená prechodová charakteristika uzavretého regulačného obvodu. Z grafu je zrejmé, že teplota sleduje referenčný signál a po prechodnom deji s úvodným prekmitom sa stabilne ustaľuje na žiadanej hodnote.
 
@@ -152,3 +218,24 @@ Na obrázku \ref{fig:sim_zasah} je následne znázornený priebeh akčného zás
 Na základe dosiahnutých výsledkov možno konštatovať, že navrhnutý PI regulátor je stabilný, dostatočne robustný a je plne schopný úspešne regulovať identifikovaný simulačný model procesu chladenia.
 
 \subsection{Výsledné parametre}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Parameter} & \textbf{Mód 2 (TEC)} & \textbf{Mód 3 (Pumpa)} \\
+\hline
+$K$         & $-0{,}1259\,^\circ\text{C/PWM}$ & $0{,}0559\,^\circ\text{C/PWM}$ \\
+$T$         & $2044{,}3\,\text{s}$            & $2924{,}8\,\text{s}$ \\
+$T_d$       & $10{,}7\,\text{s}$              & $72{,}0\,\text{s}$ \\
+\hline
+$K_p$       & $-50{,}0$    & $103{,}81$ \\
+$K_i$       & $-0{,}053$   & $0{,}0515$ \\
+$K_d$       & $-25{,}0$    & $0$ \\
+Saturácia   & $\langle -255,\, 0 \rangle$ & $\langle 75,\, 180 \rangle$ \\
+Anti-windup & clamping     & clamping \\
+\hline
+\end{tabular}
+\caption{Výsledné parametre identifikácie a regulátorov pre oba módy}
+\end{table}

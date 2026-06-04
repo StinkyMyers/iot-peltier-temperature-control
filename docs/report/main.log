@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.27)  4 JUN 2026 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.27)  4 JUN 2026 14:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -964,25 +964,25 @@ Package biblatex Info: Reference segment=0 on input line 15.
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 ...{7.1}Flask + SocketIO}{15}{subsection.7.1}
+l.36 ... {7}Backend - Raspberry Pi}{19}{section.7}
                                                   % [1])
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
  [2] (chapters/1_uloha.tex [1]
-<images/schema_zapojenia.png, id=349, 1173.38374pt x 831.105pt>
+<images/schema_zapojenia.png, id=354, 1173.38374pt x 831.105pt>
 File: images/schema_zapojenia.png Graphic file (type png)
 <use images/schema_zapojenia.png>
 Package pdftex.def Info: images/schema_zapojenia.png  used on input line 79.
 (pdftex.def)             Requested size: 424.82523pt x 300.89691pt.
  [2] [3 <./images/schema_zapojenia.png>]) (chapters/2_uloha.tex
-<images/uml_diagram.png, id=366, 964.60374pt x 1115.16624pt>
+<images/uml_diagram.png, id=371, 964.60374pt x 1115.16624pt>
 File: images/uml_diagram.png Graphic file (type png)
 <use images/uml_diagram.png>
 Package pdftex.def Info: images/uml_diagram.png  used on input line 7.
 (pdftex.def)             Requested size: 472.03123pt x 545.70456pt.
  [4] [5 <./images/uml_diagram.png>]) (chapters/3_uloha.tex [6] [7]
-<images/ident_peltier_raw.jpg, id=391, 752.0597pt x 566.86781pt>
+<images/ident_peltier_raw.jpg, id=396, 752.0597pt x 566.86781pt>
 File: images/ident_peltier_raw.jpg Graphic file (type jpg)
 <use images/ident_peltier_raw.jpg>
 Package pdftex.def Info: images/ident_peltier_raw.jpg  used on input line 29.
@@ -1005,71 +1005,81 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 34.
 
 [8 <./images/ident_peltier_raw.jpg>]
-<images/ident_pumpa_raw.jpg, id=398, 752.0597pt x 566.86781pt>
+<images/ident_pumpa_raw.jpg, id=406, 752.0597pt x 566.86781pt>
 File: images/ident_pumpa_raw.jpg Graphic file (type jpg)
 <use images/ident_pumpa_raw.jpg>
-Package pdftex.def Info: images/ident_pumpa_raw.jpg  used on input line 48.
+Package pdftex.def Info: images/ident_pumpa_raw.jpg  used on input line 70.
 (pdftex.def)             Requested size: 401.22942pt x 302.43658pt.
+ [9]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 75.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 53.
+(hyperref)                removing `math shift' on input line 75.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 53.
-
-<images/ident_pumpa_orezane.jpg, id=400, 504.38437pt x 378.66469pt>
+<images/ident_pumpa_orezane.jpg, id=416, 504.38437pt x 378.66469pt>
 File: images/ident_pumpa_orezane.jpg Graphic file (type jpg)
 <use images/ident_pumpa_orezane.jpg>
-Package pdftex.def Info: images/ident_pumpa_orezane.jpg  used on input line 58.
+Package pdftex.def Info: images/ident_pumpa_orezane.jpg  used on input line 81.
 (pdftex.def)             Requested size: 377.62642pt x 283.5009pt.
-[9 <./images/ident_pumpa_raw.jpg>]
+[10 <./images/ident_pumpa_raw.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 68.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 68.
+(hyperref)                removing `math shift' on input line 91.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 68.
+(hyperref)                removing `math shift' on input line 91.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 68.
+(hyperref)                removing `math shift' on input line 91.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 68.
+(hyperref)                removing `subscript' on input line 91.
 
-[10 <./images/ident_pumpa_orezane.jpg>]
-<images/ident_pumpa_prenos.jpg, id=417, 512.66531pt x 383.93437pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 91.
+
+[11 <./images/ident_pumpa_orezane.jpg>]
+<images/ident_pumpa_prenos.jpg, id=430, 512.66531pt x 383.93437pt>
 File: images/ident_pumpa_prenos.jpg Graphic file (type jpg)
 <use images/ident_pumpa_prenos.jpg>
-Package pdftex.def Info: images/ident_pumpa_prenos.jpg  used on input line 90.
+Package pdftex.def Info: images/ident_pumpa_prenos.jpg  used on input line 115.
 (pdftex.def)             Requested size: 377.62642pt x 282.80643pt.
- [11 <./images/ident_pumpa_prenos.jpg>]
-<images/simulinkSchemaPumpa.jpg, id=425, 1120.185pt x 470.50781pt>
+ [12 <./images/ident_pumpa_prenos.jpg>]
+<images/sim_teplota_tec.png, id=438, 421.575pt x 316.18124pt>
+File: images/sim_teplota_tec.png Graphic file (type png)
+<use images/sim_teplota_tec.png>
+Package pdftex.def Info: images/sim_teplota_tec.png  used on input line 136.
+(pdftex.def)             Requested size: 377.62642pt x 283.22409pt.
+<images/sim_zasah_tec.png, id=440, 421.575pt x 316.18124pt>
+File: images/sim_zasah_tec.png Graphic file (type png)
+<use images/sim_zasah_tec.png>
+Package pdftex.def Info: images/sim_zasah_tec.png  used on input line 145.
+(pdftex.def)             Requested size: 377.62642pt x 283.22409pt.
+ [13 <./images/sim_teplota_tec.png (PNG copy)>] [14 <./images/sim_zasah_tec.png (PNG copy)>]
+<images/simulinkSchemaPumpa.jpg, id=453, 1120.185pt x 470.50781pt>
 File: images/simulinkSchemaPumpa.jpg Graphic file (type jpg)
 <use images/simulinkSchemaPumpa.jpg>
-Package pdftex.def Info: images/simulinkSchemaPumpa.jpg  used on input line 127.
+Package pdftex.def Info: images/simulinkSchemaPumpa.jpg  used on input line 195.
 (pdftex.def)             Requested size: 424.82523pt x 178.43585pt.
- [12]
-<images/priebeh_prechodovaChar_sim_cerpadlo.jpg, id=435, 504.38437pt x 378.66469pt>
+<images/priebeh_prechodovaChar_sim_cerpadlo.jpg, id=455, 504.38437pt x 378.66469pt>
 File: images/priebeh_prechodovaChar_sim_cerpadlo.jpg Graphic file (type jpg)
 <use images/priebeh_prechodovaChar_sim_cerpadlo.jpg>
-Package pdftex.def Info: images/priebeh_prechodovaChar_sim_cerpadlo.jpg  used on input line 138.
+Package pdftex.def Info: images/priebeh_prechodovaChar_sim_cerpadlo.jpg  used on input line 204.
 (pdftex.def)             Requested size: 377.62642pt x 283.5009pt.
- [13 <./images/simulinkSchemaPumpa.jpg> <./images/priebeh_prechodovaChar_sim_cerpadlo.jpg>]
-<images/priebeh_akcnyZasah_sim_cerpadlo.jpg, id=443, 517.935pt x 387.69844pt>
+ [15 <./images/simulinkSchemaPumpa.jpg>]
+<images/priebeh_akcnyZasah_sim_cerpadlo.jpg, id=466, 517.935pt x 387.69844pt>
 File: images/priebeh_akcnyZasah_sim_cerpadlo.jpg Graphic file (type jpg)
 <use images/priebeh_akcnyZasah_sim_cerpadlo.jpg>
-Package pdftex.def Info: images/priebeh_akcnyZasah_sim_cerpadlo.jpg  used on input line 147.
+Package pdftex.def Info: images/priebeh_akcnyZasah_sim_cerpadlo.jpg  used on input line 213.
 (pdftex.def)             Requested size: 377.62642pt x 282.6803pt.
-) (chapters/4_uloha.tex [14 <./images/priebeh_akcnyZasah_sim_cerpadlo.jpg>]) (chapters/zaver.tex
+ [16 <./images/priebeh_prechodovaChar_sim_cerpadlo.jpg>]) (chapters/4_uloha.tex [17 <./images/priebeh_akcnyZasah_sim_cerpadlo.jpg>]) (chapters/zaver.tex
 Overfull \hbox (12.0812pt too wide) in paragraph at lines 28--1
 \T1/cmr/m/n/10.95 pred-chá-dza pre-hria-tiu Pel-tie-rovho £lánku. Pre Mód 3 sú de-fi-no-vané li-mity \T1/cmtt/m/n/10.95 min_pwm=75 \T1/cmr/m/n/10.95 a \T1/cmtt/m/n/10.95 max_pwm=180\T1/cmr/m/n/10.95 .
  []
@@ -1079,7 +1089,7 @@ Overfull \hbox (17.68095pt too wide) in paragraph at lines 3--7
 []\T1/cmr/m/n/10.95 Backend sys-tému beºí na jed-no-dos-ko-vom po-£í-ta£i Rasp-berry Pi 4B (ve-rejná IP ad-resa \T1/cmtt/m/n/10.95 147.175.105.185\T1/cmr/m/n/10.95 )
  []
 
-[15]
+[18]
 Overfull \hbox (68.96483pt too wide) in paragraph at lines 15--18
 []\T1/cmr/m/n/10.95 Server po-£úva na porte \T1/cmtt/m/n/10.95 5000 \T1/cmr/m/n/10.95 a je na-kon-fi-gu-ro-vaný pre viac-vlák-nový asynch-rónny re-ºim (\T1/cmtt/m/n/10.95 async_mode='threading'\T1/cmr/m/n/10.95 ),
  []
@@ -1089,25 +1099,25 @@ Overfull \hbox (18.49432pt too wide) in paragraph at lines 21--23
 []\T1/cmtt/m/n/10.95 command \T1/cmr/m/n/10.95 -- prí-jem prí-ka-zov z fron-tendu (OPEN, START, STOP, CLOSE, MODE1/2/3, SET_PID), 
  []
 
-[16] [17]
-<images/login_screen_peltier.png, id=464, 335.75438pt x 241.65282pt>
+[19] [20]
+<images/login_screen_peltier.png, id=493, 335.75438pt x 241.65282pt>
 File: images/login_screen_peltier.png Graphic file (type png)
 <use images/login_screen_peltier.png>
 Package pdftex.def Info: images/login_screen_peltier.png  used on input line 120.
 (pdftex.def)             Requested size: 283.22162pt x 203.84244pt.
- [18 <./images/login_screen_peltier.png>]
-<images/mod_1_peltier.png, id=475, 1136.44576pt x 517.935pt>
+ [21 <./images/login_screen_peltier.png>]
+<images/mod_1_peltier.png, id=502, 1136.44576pt x 517.935pt>
 File: images/mod_1_peltier.png Graphic file (type png)
 <use images/mod_1_peltier.png>
 Package pdftex.def Info: images/mod_1_peltier.png  used on input line 162.
 (pdftex.def)             Requested size: 472.03123pt x 215.12868pt.
-<images/mod_2_peltier.png, id=476, 1151.502pt x 521.5485pt>
+<images/mod_2_peltier.png, id=503, 1151.502pt x 521.5485pt>
 File: images/mod_2_peltier.png Graphic file (type png)
 <use images/mod_2_peltier.png>
 Package pdftex.def Info: images/mod_2_peltier.png  used on input line 168.
 (pdftex.def)             Requested size: 472.03123pt x 213.79646pt.
- [19 <./images/mod_1_peltier.png>]
-<images/mod_3_peltier.png, id=483, 1145.4795pt x 517.935pt>
+ [22 <./images/mod_1_peltier.png>]
+<images/mod_3_peltier.png, id=513, 1145.4795pt x 517.935pt>
 File: images/mod_3_peltier.png Graphic file (type png)
 <use images/mod_3_peltier.png>
 Package pdftex.def Info: images/mod_3_peltier.png  used on input line 174.
@@ -1117,38 +1127,38 @@ Overfull \hbox (5.90953pt too wide) in paragraph at lines 180--182
 []\T1/cmr/m/n/10.95 Pod gra-fom sú umiest-nené tri ana-ló-gové ci-fer-níky (gau-ges) im-ple-men-to-vané po-mo-cou kniº-nice \T1/cmr/bx/n/10.95 canvas-
  []
 
-<images/ciferniky_peltier.png, id=484, 841.34325pt x 142.73325pt>
+<images/ciferniky_peltier.png, id=514, 841.34325pt x 142.73325pt>
 File: images/ciferniky_peltier.png Graphic file (type png)
 <use images/ciferniky_peltier.png>
 Package pdftex.def Info: images/ciferniky_peltier.png  used on input line 193.
 (pdftex.def)             Requested size: 472.03123pt x 80.08034pt.
-[20 <./images/mod_2_peltier.png> <./images/mod_3_peltier.png>] [21 <./images/ciferniky_peltier.png>])
+[23 <./images/mod_2_peltier.png> <./images/mod_3_peltier.png>] [24 <./images/ciferniky_peltier.png>])
 
 LaTeX Warning: Empty bibliography on input line 34.
 
-[22] (main.aux)
+[25] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: BD90400FD9C113E1E6C3EE988622D08D;10709.
+(rerunfilecheck)             Checksum: 99F50867FE5A41257B46DBFEAF237D1A;10936.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33041 strings out of 467871
- 634937 string characters out of 5418376
- 1532581 words of memory out of 5000000
- 61283 multiletter control sequences out of 15000+600000
+ 33070 strings out of 467871
+ 635591 string characters out of 5418376
+ 1532784 words of memory out of 5000000
+ 61300 multiletter control sequences out of 15000+600000
  641130 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,11n,118p,765b,2125s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,118p,765b,2107s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcbx1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (25 pages, 1236812 bytes).
+Output written on main.pdf (28 pages, 1283622 bytes).
 PDF statistics:
- 1127 PDF objects out of 1200 (max. 8388607)
- 119 named destinations out of 1000 (max. 500000)
- 587 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1162 PDF objects out of 1200 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 605 words of extra memory for PDF output out of 10000 (max. 10000000)
 
