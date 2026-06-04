@@ -903,6 +903,7 @@
         fetch(url)
             .then(r => r.json())
             .then(rows => {
+                // Vymazať všetky datasety aj pomocné polia
                 chart.data.datasets.forEach(ds => ds.data = []);
                 pwmTecHistory.length  = 0;
                 pwmPumpHistory.length = 0;
@@ -912,20 +913,33 @@
                 let prevTime = null;
 
                 rows.forEach(r => {
-                    const t = r.time_ms / 1000.0;
-                    // Vloží null-bod ak je väčšia medzera (graf nebude spojitý)
+                    const t  = r.time_ms / 1000.0;
+                    const sp = r.setpoint ?? pid_params_cache.setpoint;
+
+                    // Vloží null-bod do všetkých datasetov ak je väčšia medzera
                     if (prevTime !== null && (t - prevTime) > GAP_THRESHOLD_S) {
                         chart.data.datasets[0].data.push({ x: t, y: null });
                         chart.data.datasets[1].data.push({ x: t, y: null });
                         chart.data.datasets[2].data.push({ x: t, y: null });
+                        chart.data.datasets[3].data.push({ x: t, y: null });
+                        pwmTecHistory.push({ x: t, y: null });
+                        pwmPumpHistory.push({ x: t, y: null });
                     }
                     prevTime = t;
 
-                    // Setpoint nie je uložený v DB – použijeme aktuálny
-                    addData(t, r.temp_C, r.tec_pwm, r.pump_pwm, pid_params_cache.setpoint, r.mode);
+                    // Priame vkladanie do chartových datasetov (bez limitu MAX_POINTS)
+                    chart.data.datasets[0].data.push({ x: t, y: r.temp_C });
+                    chart.data.datasets[1].data.push({ x: t, y: sp });
+                    chart.data.datasets[2].data.push({ x: t, y: r.tec_pwm });
+                    chart.data.datasets[3].data.push({ x: t, y: r.pump_pwm });
+                    pwmTecHistory.push({ x: t, y: r.tec_pwm });
+                    pwmPumpHistory.push({ x: t, y: r.pump_pwm });
+
                     addTableRow(t, r.temp_C, r.tec_pwm, r.pump_pwm, r.mode);
                 });
 
+                // Aplikuj viditeľnosť datasetov podľa aktuálneho módu
+                updateChartPwmDataset(IS_OPERATOR ? currentMode : 'ALL');
                 chart.update();
                 setStatus(`Načítaných ${rows.length} záznamov (${label})`, 'ok');
             });

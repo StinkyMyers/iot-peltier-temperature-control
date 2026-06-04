@@ -64,10 +64,24 @@ class Measurement(db.Model):
     tec_pwm  = db.Column(db.Integer,    nullable=False)
     pump_pwm = db.Column(db.Integer,    nullable=False)
     mode     = db.Column(db.String(10), nullable=False)
+    setpoint = db.Column(db.Float,      nullable=False, default=21.0)
     created  = db.Column(db.DateTime,   default=datetime.utcnow)
 
 with app.app_context():
     db.create_all()
+    # Automatická migrácia – pridá setpoint stĺpec ak ešte neexistuje
+    from sqlalchemy import inspect, text
+    inspector = inspect(db.engine)
+    cols = [c['name'] for c in inspector.get_columns('measurement')]
+    if 'setpoint' not in cols:
+        with db.engine.connect() as conn:
+            conn.execute(text(
+                'ALTER TABLE measurement ADD COLUMN setpoint FLOAT NOT NULL DEFAULT 21.0'
+            ))
+            conn.commit()
+        print(">> DB migrácia: stĺpec 'setpoint' pridaný")
+    else:
+        print(">> DB migrácia: stĺpec 'setpoint' už existuje")
 
 # =============================================
 # STAV SYSTÉMU
@@ -163,7 +177,8 @@ def on_esp_message(client, userdata, msg):
         try:
             m = Measurement(
                 time_ms=t_ms, temp_C=temp,
-                tec_pwm=tec_pwm, pump_pwm=pump_pwm, mode=mode
+                tec_pwm=tec_pwm, pump_pwm=pump_pwm, mode=mode,
+                setpoint=pid_params['setpoint']
             )
             db.session.add(m)
             db.session.commit()
@@ -360,6 +375,7 @@ def get_history():
             'tec_pwm':  r.tec_pwm,
             'pump_pwm': r.pump_pwm,
             'mode':     r.mode,
+            'setpoint': r.setpoint,
             'created':  r.created.isoformat()
         } for r in reversed(rows)])
 
@@ -379,10 +395,11 @@ def download_csv():
             f"export{suffix}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
         with open(fname, 'w', newline='') as f:
             w = csv.writer(f)
-            w.writerow(['time_ms', 'temp_C', 'tec_pwm', 'pump_pwm', 'mode', 'created'])
+            w.writerow(['time_ms', 'temp_C', 'tec_pwm', 'pump_pwm', 'mode', 'setpoint', 'created'])
             for r in rows:
                 w.writerow([r.time_ms, r.temp_C, r.tec_pwm,
-                             r.pump_pwm, r.mode, r.created.isoformat()])
+                             r.pump_pwm, r.mode, r.setpoint,
+                             r.created.isoformat()])
     return send_file(fname, as_attachment=True)
 
 @app.route('/api/download/json')
@@ -405,6 +422,7 @@ def download_json():
             'tec_pwm':  r.tec_pwm,
             'pump_pwm': r.pump_pwm,
             'mode':     r.mode,
+            'setpoint': r.setpoint,
             'ts':       r.created.isoformat()
         } for r in rows]
         with open(fname, 'w') as f:
@@ -440,4 +458,4 @@ signal.signal(signal.SIGINT,  _signal_handler)
 # =============================================
 if __name__ == '__main__':
     tb_connect()
-    socketio.run(app, host='0.0.0.0', port=5000, debug=False)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=False, allow_unsafe_werkzeug=True)
