@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, send_file, session, redirect, url_for, request
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 import csv
@@ -221,6 +221,29 @@ def connect_esp_mqtt():
         print(">> ESP32 MQTT listener spustený")
     except Exception as e:
         print(f">> ESP MQTT chyba: {e}")
+
+
+# =============================================
+# SOCKETIO – CONNECT (pošle aktuálny stav novému klientovi)
+# =============================================
+@socketio.on('connect')
+def handle_connect():
+    """
+    Keď sa pripojí nový klient (operátor alebo spektátor), okamžite mu pošleme
+    aktuálny stav systému, aby nemusel čakať na ďalší event.
+    """
+    emit('system_status', {
+        'initialized': state['initialized'],
+        'running':     state['running'],
+    })
+    # Ak beží meranie, pošli aj aktuálne PID parametre
+    if state['initialized']:
+        emit('pid_updated', {
+            'setpoint': state.get('setpoint', 21.0),
+            'Kp':       state.get('Kp', 103.8135),
+            'Ki':       state.get('Ki', 0.051495),
+            'Kd':       state.get('Kd', 0.0),
+        })
 
 # =============================================
 # SOCKETIO PRÍKAZY
