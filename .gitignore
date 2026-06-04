@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 esp32/peltier_controller/iot_cerpadlo/
 esp32/peltier_controller/iot_cerpadlo_regulacia_stabilizacianaprazdno/
 esp32/peltier_controller/iot_peltier/
+=======
+flask/instance/
+flask/data/
+*.db
+>>>>>>> e498a6a73f545584c02fe11351a581293be1e6b7
