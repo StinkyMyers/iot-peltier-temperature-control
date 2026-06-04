@@ -375,6 +375,135 @@
         .modal p  { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
         .modal-btns { display: flex; gap: 10px; justify-content: center; }
         .modal-btns .btn { min-width: 100px; }
+        /* =============================================
+           MOBILNÉ UI – responzívne prispôsobenie
+           ============================================= */
+
+        /* Spodná navigácia pre mobil */
+        .mobile-nav {
+            display: none;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            z-index: 150;
+            padding: 0;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            height: 60px;
+        }
+
+        .mobile-nav-item {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            flex: 1; gap: 3px; cursor: pointer;
+            background: none; border: none;
+            color: var(--text-muted);
+            font-size: 0.6rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            transition: color 0.2s;
+            padding: 8px 0;
+        }
+
+        .mobile-nav-item .nav-icon { font-size: 1.25rem; line-height: 1; }
+        .mobile-nav-item.active    { color: var(--accent-blue); }
+        .mobile-nav-item:hover:not(.active) { color: var(--text); }
+
+        /* Mobile tab sekcie */
+        @media (max-width: 768px) {
+            .mobile-tab-section { display: none !important; }
+            .mobile-tab-section.tab-active { display: block !important; }
+        }
+
+        @media (max-width: 768px) {
+            /* Topbar */
+            .topbar { padding: 12px 16px; }
+            .topbar-left h1 { font-size: 0.88rem; }
+            .topbar-right .role-badge { display: none; }
+
+            /* Systémový bar */
+            .system-bar {
+                padding: 10px 16px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .sys-btn { padding: 7px 14px; font-size: 0.78rem; }
+            .sys-status { margin-left: 0; width: 100%; text-align: center; }
+
+            /* Hlavný obsah – padding pre spodnú nav */
+            .main { padding: 16px; padding-bottom: 80px; }
+
+            /* Karty – 2 stĺpce */
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                margin-bottom: 16px;
+            }
+            .card { padding: 14px 16px; border-radius: 10px; }
+            .card-value { font-size: 1.7rem; }
+
+            /* Grid 2 → jeden stĺpec */
+            .grid-2 { grid-template-columns: 1fr; gap: 14px; }
+
+            /* Graf */
+            canvas#chart { max-height: 220px; }
+
+            /* Cíferníky */
+            .gauge-section { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .gauge-card { padding: 12px 8px; border-radius: 10px; }
+
+            /* Tabuľka */
+            .table-wrap { -webkit-overflow-scrolling: touch; }
+            table { font-size: 0.75rem; }
+            thead th, tbody td { padding: 6px 8px; }
+
+            /* Export */
+            .export-row { flex-direction: column; }
+            .export-row .btn { width: 100%; text-align: center; }
+
+            /* Mode grid */
+            .mode-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .mode-btn { padding: 12px 10px; font-size: 0.78rem; }
+
+            /* PID grid */
+            .pid-grid { grid-template-columns: 1fr 1fr; }
+
+            /* Panel */
+            .panel { padding: 16px; border-radius: 10px; }
+            .panel-title { margin-bottom: 12px; }
+
+            /* Spodná nav */
+            .mobile-nav { display: block; }
+
+            /* Spektátor banner */
+            .spektator-banner { padding: 8px 16px; font-size: 0.78rem; }
+
+            /* Heater */
+            .heater-btn { padding: 7px 12px; font-size: 0.78rem; }
+
+            /* Modal */
+            .modal { padding: 22px 20px; }
+
+            /* Preset buttons */
+            .preset-btn { min-width: 40px; font-size: 0.78rem; padding: 7px 8px; }
+        }
+
+        @media (max-width: 480px) {
+            .topbar { padding: 10px 14px; }
+            .main { padding: 12px; padding-bottom: 80px; }
+            .cards { gap: 8px; }
+            .card-value { font-size: 1.5rem; }
+            .card { padding: 12px 14px; }
+            .gauge-section { gap: 6px; }
+            .gauge-card { padding: 10px 4px; }
+            .system-bar { padding: 8px 12px; }
+            .sys-btn { padding: 6px 10px; font-size: 0.72rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -1198,7 +1327,142 @@
     updateGauges(0, 0, 0);
     // Nastavenie počiatočnej viditeľnosti datasetov
     updateChartPwmDataset(IS_OPERATOR ? 'MODE1' : 'ALL');
+
+    // =============================================
+    // MOBILNÁ TAB NAVIGÁCIA
+    // =============================================
+    const MOBILE_TABS = ['live', 'control', 'history', 'gauges'];
+    const TAB_SECTIONS = {
+        live:    ['section-cards', 'section-chart'],
+        control: ['section-control'],
+        history: ['section-table', 'section-export'],
+        gauges:  ['section-gauges'],
+    };
+
+    let currentMobileTab = 'live';
+
+    function mobileTab(tab) {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+        currentMobileTab = tab;
+
+        // Update nav buttons
+        MOBILE_TABS.forEach(t => {
+            const btn = document.getElementById('mnav-' + t);
+            if (btn) btn.classList.toggle('active', t === tab);
+        });
+
+        // Show/hide sections
+        Object.entries(TAB_SECTIONS).forEach(([t, ids]) => {
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (t === tab) {
+                    el.classList.add('tab-active');
+                } else {
+                    el.classList.remove('tab-active');
+                }
+            });
+        });
+
+        // Resize chart after tab switch (Chart.js needs this)
+        if (tab === 'live') {
+            setTimeout(() => { if (typeof chart !== 'undefined') chart.resize(); }, 50);
+        }
+    }
+
+    function initMobileTabs() {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+        // Wrap sections if not already wrapped – do it in JS to keep Jinja clean
+        const main = document.querySelector('.main');
+        if (!main || main.dataset.mobileWrapped) return;
+        main.dataset.mobileWrapped = '1';
+
+        // Section: cards
+        wrapSection('section-cards',   document.querySelector('.cards'));
+        // Section: chart (graf + ovládanie, alebo len graf pre spektátora)
+        const chartSection = document.querySelector('.grid-2') || document.querySelector('.panel:has(canvas#chart)');
+        wrapSection('section-chart', chartSection);
+        // Section: control panel (right panel in grid-2, operator only)
+        // For operator the grid-2 contains both chart and control – we need the second child
+        const grid2 = document.querySelector('.grid-2');
+        if (grid2 && IS_OPERATOR) {
+            const panels = grid2.querySelectorAll(':scope > .panel');
+            if (panels.length >= 2) {
+                // Move control panel into its own section wrapper
+                const controlWrapper = document.createElement('div');
+                controlWrapper.id = 'section-control';
+                controlWrapper.className = 'mobile-tab-section';
+                panels[1].parentNode.insertBefore(controlWrapper, panels[1]);
+                controlWrapper.appendChild(panels[1]);
+                main.insertBefore(controlWrapper, grid2.nextSibling);
+            }
+        } else {
+            // spectator – no control tab needed, hide it
+            const controlBtn = document.getElementById('mnav-control');
+            if (controlBtn) controlBtn.style.display = 'none';
+        }
+        // Section: gauges
+        wrapSection('section-gauges', document.querySelector('.gauge-section'));
+        // Section: table
+        wrapSection('section-table',  document.querySelector('.panel:has(#table-body)'));
+        // Section: export
+        const panels = document.querySelectorAll('.main > .panel');
+        const exportPanel = Array.from(panels).find(p => p.querySelector('#inp-hours'));
+        wrapSection('section-export', exportPanel);
+
+        // Activate first tab
+        mobileTab('live');
+    }
+
+    function wrapSection(id, el) {
+        if (!el || document.getElementById(id)) return;
+        const wrapper = document.createElement('div');
+        wrapper.id = id;
+        wrapper.className = 'mobile-tab-section';
+        el.parentNode.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
+    }
+
+    // Run on load and on resize
+    window.addEventListener('load', initMobileTabs);
+    window.matchMedia('(max-width: 768px)').addEventListener('change', (e) => {
+        if (e.matches) {
+            initMobileTabs();
+            mobileTab(currentMobileTab);
+        } else {
+            // Desktop – remove tab hiding
+            document.querySelectorAll('.mobile-tab-section').forEach(el => {
+                el.classList.add('tab-active');
+            });
+        }
+    });
+
 </script>
+
+
+<!-- MOBILNÁ SPODNÁ NAVIGÁCIA -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobilná navigácia">
+    <div class="mobile-nav-items">
+        <button class="mobile-nav-item active" id="mnav-live" onclick="mobileTab('live')" aria-label="Live dáta">
+            <span class="nav-icon">📊</span>
+            <span>Live</span>
+        </button>
+        <button class="mobile-nav-item" id="mnav-control" onclick="mobileTab('control')" aria-label="Ovládanie" id="mnav-control-btn">
+            <span class="nav-icon">⚙️</span>
+            <span>Ovládanie</span>
+        </button>
+        <button class="mobile-nav-item" id="mnav-history" onclick="mobileTab('history')" aria-label="História">
+            <span class="nav-icon">🕐</span>
+            <span>História</span>
+        </button>
+        <button class="mobile-nav-item" id="mnav-gauges" onclick="mobileTab('gauges')" aria-label="Merania">
+            <span class="nav-icon">🌡️</span>
+            <span>Meranie</span>
+        </button>
+    </div>
+</nav>
 
 </body>
 </html>
