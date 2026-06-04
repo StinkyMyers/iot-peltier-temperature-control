@@ -1,9 +1,32 @@
-<<<<<<< HEAD
 esp32/peltier_controller/iot_cerpadlo/
 esp32/peltier_controller/iot_cerpadlo_regulacia_stabilizacianaprazdno/
 esp32/peltier_controller/iot_peltier/
-=======
 flask/instance/
 flask/data/
 *.db
->>>>>>> e498a6a73f545584c02fe11351a581293be1e6b7
+
+# LaTeX build files
+docs/report/main.aux
+docs/report/main.bbl
+docs/report/main.bcf
+docs/report/main.fdb_latexmk
+docs/report/main.fls
+docs/report/main.log
+docs/report/main.out
+docs/report/main.run.xml
+docs/report/main.synctex.gz
+docs/report/main.toc
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Flask/SQLite
+flask/instance/
+flask/data/
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
