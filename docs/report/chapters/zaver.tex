@@ -1,2 +1,259 @@
+\section{Backend - Raspberry Pi}
+
+Backend systému beží na jednodoskovom počítači Raspberry Pi 4B (verejná IP adresa
+\texttt{147.175.105.185}) a tvorí centrálnu komunikačnú a dátovú vrstvu celého IoT
+riešenia. Zodpovedá za príjem dát z ESP32, ich archiváciu, distribúciu do frontendu
+v reálnom čase a odosielanie príkazov späť na mikrokontrolér.
+
+\subsection{Flask + SocketIO}
+
+Webový server je implementovaný pomocou mikroframeworku \textbf{Flask} pomocou
+knižnice \textbf{Flask-SocketIO}. Flask zabezpečuje klasické HTTP endpointy, zatiaľ čo SocketIO umožňuje obojsmernú
+komunikáciu v reálnom čase medzi serverom a prehliadačom bez nutnosti opakovania
+HTTP požiadaviek.
+
+Server počúva na porte \texttt{5000} a je nakonfigurovaný pre viacvláknový asynchrónny
+režim (\texttt{async\_mode='threading'}), čo umožňuje súbežné spracovanie MQTT správ
+a WebSocket udalostí.
+
+Kľúčové SocketIO udalosti:
+\begin{itemize}
+  \item \texttt{command} -- príjem príkazov z frontendu (OPEN, START, STOP, CLOSE,
+        MODE1/2/3, SET\_PID),
+  \item \texttt{data} -- vysielanie nameraných hodnôt do všetkých pripojených klientov,
+  \item \texttt{system\_status} -- informácia o stave systému (inicializovaný / beží),
+  \item \texttt{pid\_updated} / \texttt{pid\_error} -- potvrdenie alebo odmietnutie
+        zmeny PID parametrov.
+\end{itemize}
+
+Autentifikácia je riešená pomocou \textbf{Flask session} s dvoma rolami:
+\textit{operator} (plný prístup – ovládanie aj sledovanie) a \textit{spectator}
+(iba sledovanie). Prístup k chráneným endpointom je vynucovaný dekorátorom
+\texttt{login\_required}.
+
+\subsection{MQTT broker (Mosquitto)}
+
+Komunikácia medzi ESP32 a Raspberry Pi prebieha prostredníctvom protokolu \textbf{MQTT}.
+Na Raspberry Pi beží broker \textbf{Mosquitto}, na ktorý sa ESP32 pripája cez WiFi.
+Flask backend si udržiava vlastného MQTT klienta (\texttt{paho-mqtt}), ktorý je prihlásený
+na odber témy \texttt{peltier/data} a zároveň publikuje príkazy na tému
+\texttt{peltier/cmd}.
+
+Formát správy z ESP32 je textový CSV riadok:
+\begin{verbatim}
+<time_ms>,<temp_C>,<tec_pwm>,<pump_pwm>,<mode>
+\end{verbatim}
+Správy začínajúce znakom \texttt{\#} a riadky s menej ako 5 poľami sú ignorované.
+Hodnoty teploty pod \texttt{-100 °C} sú považované za chybu senzora a tiež sa zahadzujú.
+
+Príkazy posielané na ESP32:
+\begin{itemize}
+  \item \texttt{STABILIZE} -- ustálenie systému po štarte (TEC 25\,\%, pumpa 50\,\%),
+  \item \texttt{MANUAL:tec:pump} -- manuálne nastavenie PWM hodnôt (Mód 1),
+  \item \texttt{PID\_TEC} -- spustenie PID regulácie TEC (Mód 2),
+  \item \texttt{PID} -- spustenie PID regulácie pumpy (Mód 3),
+  \item \texttt{SET\_SP / SET\_KP / SET\_KI / SET\_KD} -- aktualizácia parametrov regulácie,
+  \item \texttt{STOP} -- zastavenie všetkých výstupov.
+\end{itemize}
+
+\subsection{SQL databáza}
+
+Každá prijatá meracia správa je uložená do \textbf{SQLite} databázy
+(\texttt{peltier.db}) prostredníctvom ORM knižnice \textbf{Flask-SQLAlchemy}.
+Databáza je jediným zdrojom pravdy (\textit{single source of truth}) pre historické dáta.
+
+Tabuľka \texttt{Measurement} obsahuje nasledujúce stĺpce:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Stĺpec} & \textbf{Typ} & \textbf{Popis} \\
+\hline
+\texttt{id}       & INTEGER & Primárny kľúč (auto-increment) \\
+\texttt{time\_ms} & INTEGER & Čas od štartu merania v milisekundách \\
+\texttt{temp\_C}  & FLOAT   & Teplota kvapaliny v °C \\
+\texttt{tec\_pwm} & INTEGER & PWM hodnota TEC (0--255) \\
+\texttt{pump\_pwm}& INTEGER & PWM hodnota pumpy (0--255) \\
+\texttt{mode}     & TEXT    & Aktívny mód (MODE1 / MODE2 / MODE3 / STOP) \\
+\texttt{created}  & DATETIME& Čas záznamu (UTC) \\
+\hline
+\end{tabular}
+\caption{Štruktúra tabuľky \texttt{Measurement} v SQLite databáze}
+\end{table}
+
+REST endpoint \texttt{/api/history} vracia posledných 500 záznamov zoradených
+chronologicky -- tieto dáta sa načítavajú pri inicializácii grafu na dashboarde.
+
+\subsection{CSV + JSON archivácia}
+
+Backend umožňuje export celej databázy meraní vo formátoch \textbf{CSV} a \textbf{JSON}
+prostredníctvom HTTP endpointov \texttt{/api/download/csv} a \texttt{/api/download/json}.
+Súbory sú generované na požiadanie, pomenované s časovou pečiatkou spustenia servera (napr. export\_\\20260530\_143000.csv) a uložené do adresára data.
+
+CSV súbor obsahuje stĺpce: \texttt{time\_ms, temp\_C, tec\_pwm, pump\_pwm, mode, created}.
+JSON súbor obsahuje rovnaké polia vo forme poľa objektov s kľúčom \texttt{ts} pre
+časovú pečiatku. Exportovaný súbor je vrátený ako príloha (\texttt{as\_attachment=True}),
+čo umožňuje jeho priame stiahnutie z prehliadača.
+
+\subsection{Thingsboard integrácia}
+
+Backend obsahuje implementovanú integráciu s cloudovou platformou \textbf{ThingsBoard}
+cez MQTT protokol. Po každom prijatom meraní sú hodnoty teploty, TEC PWM, pumpa PWM,
+aktívneho módu a setpointu publikované na ThingsBoard server
+(\texttt{mqtt.eu.thingsboard.cloud}) pomocou access tokenu zariadenia.
+
+Platformu sa v rámci projektu nepodarilo plne sprevádzkovať do finálnej verzie.
+Kód integrácie je však súčasťou backendu a po správnom nastavení prístupových údajov
+je funkčný.
+
+\section{Frontend - Webový dashboard}
+
+Webový dashboard je prístupný na adrese \texttt{http://147.175.105.185:5000} a tvorí
+hlavné používateľské rozhranie systému. Je implementovaný v čistom HTML, CSS a
+JavaScripte bez externých SPA frameworkov, pričom na vizualizáciu využíva knižnice
+\textbf{Chart.js} (grafy) a \textbf{canvas-gauges} (ciferníky). Komunikácia
+so serverom prebieha cez WebSocket (Socket.IO klient).
+
+\begin{figure}[H]
+  \centering
+%  \includegraphics[width=0.6\textwidth]{login_screen_peltier.png}
+  \caption{Prihlasovacia stránka -- Peltier Control IoT Dashboard}
+\end{figure}
+
+
+\subsection{Popis funkcií (Open/Start/Stop/Close)}
+
+Ovládanie systému je rozdelené do štyroch hlavných tlačidiel umiestnených v
+hornej lište dashboardu, ktoré musia byť aktivované v predpísanom poradí:
+
+\begin{enumerate}
+  \item \textbf{Open} -- inicializuje spojenie so serverom a spustí MQTT listener
+        pre príjem dát z ESP32. Systém prejde do stavu \textit{inicializovaný}.
+  \item \textbf{Start} -- odošle príkaz \texttt{STABILIZE} na ESP32 a spustí
+        zber meraní. ESP32 nastaví TEC na 25\,\% a pumpu na 50\,\% na ustálenie
+        systému.
+  \item \textbf{Stop} -- zastaví meranie, odošle \texttt{STOP} na ESP32 a
+        vynuluje PWM hodnoty. Systém zostane v inicializovanom stave.
+  \item \textbf{Close} -- ukončí spojenie, deaktivuje systém a odošle \texttt{STOP}
+        ako bezpečnostné opatrenie.
+\end{enumerate}
+
+Grafické zvýraznenie aktívneho tlačidla (napr. oranžový rámček pri \textit{Stop}
+počas behu merania) poskytuje operátorovi okamžitú spätnú väzbu o stave systému.
+
+\subsection{Grafy}
+
+Sekcia \textbf{Priebeh merania} zobrazuje interaktívny čiarový graf vykreslený
+knižnicou Chart.js. Graf zobrazuje časové priebehy:
+\begin{itemize}
+  \item teploty kvapaliny [°C] -- modrá krivka,
+  \item setpointu [°C] -- červená prerušovaná krivka,
+  \item PWM TEC alebo PWM Pumpy v závislosti od aktívneho módu -- oranžová/zelená
+        krivka (pravá os Y, rozsah 0--255).
+\end{itemize}
+
+Graf si uchováva posledných 300 bodov a je aktualizovaný v reálnom čase pri
+každom príchode WebSocket správy. Po načítaní stránky sa zobrazia historické dáta
+z databázy (endpoint \texttt{/api/history}).
+
+\begin{figure}[H]
+  \centering
+ % \includegraphics[width=\textwidth]{mod_1_peltier.png}
+  \caption{Dashboard v Móde 1 (manuálne PWM) -- priebeh merania s grafom teploty a PWM}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ % \includegraphics[width=\textwidth]{mod_2_peltier.png}
+  \caption{Dashboard v Móde 2 (PID -- TEC) -- regulácia TEC PWM s viditeľným skokom setpointu}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+ % \includegraphics[width=\textwidth]{mod_3_peltier.png}
+  \caption{Dashboard v Móde 3 (PID -- Pumpa) -- regulácia prietoku pumpy}
+\end{figure}
+
+\subsection{Ciferníky}
+
+Pod grafom sú umiestnené tri analógové ciferníky (gauges) implementované pomocou
+knižnice \textbf{canvas-gauges}:
+\begin{itemize}
+  \item \textbf{Teplota} [°C] -- modrý ciferník, rozsah 0--40\,°C,
+  \item \textbf{TEC PWM} -- oranžový ciferník, rozsah 0--255,
+  \item \textbf{Pumpa PWM} -- zelený ciferník, rozsah 0--255.
+\end{itemize}
+
+Ciferníky sú aktualizované synchrónne s grafom a poskytujú intuitívnu vizuálnu
+reprezentáciu aktuálnych hodnôt.
+
+\begin{figure}[H]
+  \centering
+ % \includegraphics[width=\textwidth]{ciferniky_peltier.png}
+  \caption{Analógové ciferníky -- teplota, TEC PWM a Pumpa PWM}
+\end{figure}
+
+\subsection{Tabuľka meraní}
+
+Dashboard obsahuje tabuľku posledných 50 meraní načítaných z REST endpointu
+\texttt{/api/history}. Každý riadok zobrazuje čas záznamu (UTC), teplotu,
+TEC PWM, pumpa PWM a aktívny mód. Tabuľka je statická -- neaktualizuje sa
+automaticky, ale je obnovená pri každom načítaní stránky.
+
+\subsection{PID Panel}
+
+Panel \textbf{Režim} na pravej strane dashboardu umožňuje operátorovi:
+\begin{itemize}
+  \item prepínanie medzi módmi (Mód 1, Mód 2, Mód 3, Stop),
+  \item zadanie hodnôt \textit{Setpoint}, $K_p$, $K_i$, $K_d$ do číselných polí,
+  \item odoslanie parametrov tlačidlom \textbf{Použiť PID},
+  \item načítanie odporúčaných parametrov tlačidlom \textbf{Odporúčané}
+        (rôzne hodnoty pre Mód 2 a Mód 3 podľa identifikácie systému).
+\end{itemize}
+
+Ak operátor zadá setpoint vyšší ako aktuálna teplota, server požiadavku odmietne
+a odošle chybovú správu \texttt{pid\_error} -- systém totiž dokáže iba chladiť.
+Aktívny mód je vizuálne zvýraznený farebným rámčekom príslušného tlačidla.
+
+\subsection{Dashboard}
+
+Celkový dizajn dashboardu je navrhnutý s dôrazom na prehľadnosť a použiteľnosť
+v laboratórnych podmienkach. Rozhranie podporuje prepínanie medzi \textbf{tmavým
+a svetlým režimom} (Dark/Light mode), pričom predvolený je tmavý. Používateľ
+je informovaný o aktuálnom stave systému prostredníctvom:
+\begin{itemize}
+  \item farebných informačných kariet v hornej časti (Teplota, Setpoint, TEC PWM,
+        Pumpa PWM) s farebnými rámčekmi podľa veličiny,
+  \item stavového indikátora v pravom rohu lišty (\textit{Meranie beží} / neaktívne),
+  \item zobrazeného mena a roly prihláseného používateľa,
+  \item hlásenia aktívneho módu v hornej lište.
+\end{itemize}
+
+Rozhranie pre rolu \textit{spectator} je identické, no všetky ovládacie prvky
+(tlačidlá, posúvače, PID polia) sú deaktivované.
+
+\section{Výsledky merania}
+
+\subsection{Graf regulácie Mód 2}
+\subsection{Graf regulácie Mód 3}
+\subsection{Zhodnotenie kvality regulácie}
+\subsection{Porovnanie módov}
+
+\section{Používateľská príručka}
+
+\subsection{Spustenie systému (krok za krokom)}
+\subsection{Popis tlačidiel dashboardu}
+\subsection{Nastavenie PID parametrov}
+\subsection{Export dát}
+
+\section{Vývojárska príručka}
+
+\subsection{Štruktúra repozitára (GitHub link)}
+\subsection{Inštalácia závislostí}
+\subsection{Konfigurácia (WiFi, MQTT, port)}
+\subsection{Spustenie backendu}
+
 \section{Záver}
 
+\section{Zoznam literatúry}
