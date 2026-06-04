@@ -1,9 +1,28 @@
-section{ESP32 firmware}
+\section{ESP32 firmware}
 
 \subsection{Popis kódu}
+
+Firmvér je implementovaný v jazyku C++ pomocou frameworku Arduino pre ESP32 v prostredí PlatformIO. Jadrom firmvéru je stavový automat s piatimi stavmi: \texttt{MODE\_STOP}, \texttt{MODE\_STABILIZE}, \texttt{MODE\_PID\_TEC}, \texttt{MODE\_PID\_PUMP} a \texttt{MODE\_MANUAL}. Hlavná slučka beží s periódou 5 sekundy, počas ktorej sa vykoná meranie teploty, výpočet regulátora a publikovanie dát cez MQTT.
+
 \subsection{PWM konfigurácia}
+
+ESP32 využíva vlastný LEDC systém pre generovanie PWM signálov. Sú nakonfigurované dva kanály -- kanál 0 pre Peltierov článok (pin 18) a kanál 1 pre pumpu (pin 21). Oba kanály pracujú s frekvenciou 5\,kHz a 8-bitovým rozlíšením (hodnoty 0--255), čo zodpovedá rozsahu výkonu 0--100\,\%.
+
+\begin{verbatim}
+ledcSetup(CH_PELTIER, 5000, 8);
+ledcAttachPin(PIN_PELTIER, CH_PELTIER);
+\end{verbatim}
+
 \subsection{Implementácia PID}
+
+Systém implementuje dva nezávislé PID regulátory. Pre Mód~2 (regulácia TEC) sú parametre $K_p = -50$, $K_i = -0{,}053$, $K_d = -25$. Pre Mód~3 (regulácia pumpy) je použitý PI regulátor s Feed-Forward a Anti-Windup s parametrami $K_p = 103{,}81$, $K_i = 0{,}0515$.
+
+PID výpočet prebieha v diskrétnom čase s periódou vzorkovania $T_s = 5$\,s. Derivačná zložka využíva diferenciu po chybe medzi dvoma po sebe idúcimi vzorkami.
+
 \subsection{MQTT komunikácia}
+
+Po pripojení na WiFi sieť sa ESP32 pripojí na MQTT broker Mosquitto bežiaci na Raspberry Pi. ESP32 publikuje namerané dáta na tému \texttt{peltier/data} vo formáte CSV a odoberá príkazy z témy \texttt{peltier/cmd}. Pri výpadku spojenia sa ESP32 automaticky pokúša o opätovné pripojenie.
+
 \subsection{Bezpečnostné prvky (saturácia, anti-windup)}
 
-
+Akčný zásah je obmedzený saturáciou na maximálne 80\,\% výkonu (PWM\,=\,204) pre Mód~2, čím sa predchádza prehriatiu Peltierovho článku. Pre Mód~3 sú definované limity \texttt{min\_pwm\,=\,75} a \texttt{max\_pwm\,=\,180}. Anti-windup je riešený metódou clampingu -- integrál sa akumuluje len v prípade, že akčný zásah nie je v saturácii, prípadne ak smer chyby prispieva k opusteniu saturácie. Pri štarte každého módu sa integrál a predchádzajúca chyba vynulujú.

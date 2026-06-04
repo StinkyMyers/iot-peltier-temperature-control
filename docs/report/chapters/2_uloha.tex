@@ -1,4 +1,48 @@
 \section{Architektúra systému}
 
 \subsection{UML diagram}
-\subsection{Popis komunikačných protokolov}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{images/uml_diagram.png}
+  \caption{UML diagram architektúry systému -- päťvrstvová IoT architektúra so sekvenčným diagramom}
+\end{figure}
+
+\subsection{Štruktúra systému}
+
+Diagram zobrazuje päť vrstiev architektúry, farebne odlíšených:
+
+\textbf{Hardvér} --- fyzické komponenty pripojené k ESP32: teplotný senzor DS18B20 (OneWire), Peltierov článok TEC1-12706 riadený PWM, vodná pumpa (PWM), ventilátor a SSR relé pre ohrievač.
+
+\textbf{Mikrokontrolér ESP32} --- centrálny prvok implementujúci stavový automat s módmi: Mód~1 (manuál), Mód~2 (PID\,--\,TEC), Mód~3 (PID\,--\,pumpa), Stabilizácia a Stop. Vzorkuje teplotu každé 2 sekundy a komunikuje cez WiFi a MQTT.
+
+\textbf{Backend --- Raspberry Pi (147.175.105.185)} --- skladá sa zo štyroch komponentov: Mosquitto (MQTT broker :1883), Flask + SocketIO (REST API + WebSocket :5000), SQLite (archivácia meraní) a správa rolí Operátor\,/\,Spektátor.
+
+\textbf{Frontend --- Webový dashboard} --- dostupný na porte 5000, obsahuje Graf (Chart.js, posledných 300 bodov), Ciferníky (Canvas gauge), Ovládanie (Open\,/\,Start\,/\,Stop\,/\,Close, výber módu, nastavenie PID) a Export (CSV\,/\,JSON).
+
+\textbf{Cloud --- ThingsBoard} --- prijíma MQTT telemetriu z backendu pre pokročilú cloudovú vizualizáciu.
+
+\subsection{Sekvenčný diagram}
+
+Sekvenčný diagram zobrazuje tok príkazu z používateľského rozhrania. Používateľ odošle príkaz \texttt{MODE2} do Flasku. Flask následne publikuje príkaz \texttt{PID\_TEC} cez broker Mosquitto na ESP32. ESP32 prepne do Módu~2, spustí PID reguláciu a každé 2 sekundy odosiela späť namerané hodnoty \texttt{data (temp, pwm)}.
+
+\subsection{Použité protokoly}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{>{\bfseries}l c p{8.5cm}}
+\toprule
+Protokol & Port & Použitie \\
+\midrule
+MQTT        & 1883 & ESP32 $\leftrightarrow$ Mosquitto $\leftrightarrow$ Flask $\leftrightarrow$ ThingsBoard --- telemetria a príkazy \\
+WebSocket   & 5000 & Flask $\rightarrow$ Dashboard --- real-time push dát bez pollingu \\
+REST API    & 5000 & Dashboard $\rightarrow$ Flask --- ovládanie, nastavenie PID, export \\
+OneWire     & ---  & ESP32 $\leftarrow$ DS18B20 --- meranie teploty \\
+PWM         & ---  & ESP32 $\rightarrow$ TEC\,/\,Pumpa --- riadenie výkonu (0--255) \\
+\bottomrule
+\end{tabular}
+\caption{Prehľad komunikačných protokolov}
+\end{table}
+
+MQTT je asynchrónny publish/subscribe protokol s nízkou réžiou, ideálny pre IoT zariadenia s obmedzeným výkonom. WebSocket udržuje trvalé spojenie medzi serverom a prehliadačom pre okamžitú aktualizáciu dashboardu. REST API zabezpečuje synchrónne ovládanie systému z frontendu.

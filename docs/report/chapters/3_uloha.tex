@@ -22,9 +22,14 @@ Prostredníctvom sériovej linky bolo možné odoslať príkazy pre tri rôzne r
 
 Identifikačné meranie pri regulácii teploty vody pomocou Peltierovho článku bolo realizované nasledovne. Chladič na teplej strane Peltierovho článku bol počas celého merania zapnutý na maximálny výkon. Vodné čerpadlo bolo taktiež zapnuté konštantne s PWM plnením 50\%. Počas fázy stabilizácie bol Peltierov článok vypnutý (PWM plnenie 0\%). Po ustálení teploty na stabilnej hodnote bol realizovaný skok akčnej veličiny, pričom PWM plnenie Peltierovho článku bolo nastavené na 60\%.
 
-Priebeh odozvy systému na skokovú zmenu výkonu Peltierovho článku je znázornený na obrázku XX.
+Priebeh odozvy systému na skokovú zmenu výkonu Peltierovho článku je znázornený na obrázku \ref{fig:odozva_peltier}.
 
-OBRÁZOK
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{images/ident_peltier_raw.jpg}
+  \caption{Priebeh odozvy teploty na skokovú zmenu výkonu Peltierovho článku}
+  \label{fig:odozva_peltier}
+\end{figure}
 
 \subsubsection{Výpočet parametrov $K$ a $T$}
 
@@ -36,17 +41,21 @@ Pri regulácii teploty vody pomocou vodného čerpadla bol chladič na teplej st
 
 Počas stabilizačnej fázy bolo čerpadlo nastavené na PWM plnenie 30\%. Vo fáze skoku bolo PWM plnenie zvýšené na 70\%. Skok akčnej veličiny nebol realizovaný z hodnoty 0\%, pretože pri takomto nastavení by sa čerpadlo zastavilo a ustálená hodnota získaná počas stabilizačnej fázy by nebola reprezentatívna. PWM plnenie 30\% predstavovalo najnižšiu hodnotu, pri ktorej bolo čerpadlo schopné spoľahlivo sa rozbehnúť a zostať v prevádzke počas celého merania.
 
-Priebeh odozvy teploty vody v zásobníku na skokovú zmenu výkonu čerpadla je znázornený na obrázku XX.
+Priebeh odozvy teploty vody v zásobníku na skokovú zmenu výkonu čerpadla je znázornený na obrázku \ref{fig:odozva_pumpa}.
 
-OBRÁZOK
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{images/ident_pumpa_raw.jpg}
+  \caption{Priebeh odozvy teploty na skokovú zmenu výkonu čerpadla}
+  \label{fig:odozva_pumpa}
+\end{figure}
 
 \subsubsection{Výpočet statického zosilnenia $K$}
 Skoková zmena akčného zásahu bola realizovaná znížením plnenia PWM čerpadla z pôvodnej hodnoty $u_0 = 179$ na $u_\infty = 75$. Zníženie prietoku spôsobilo výraznejšie ochladzovanie vody, pričom teplota klesla z ustálenej počiatočnej hodnoty $y_0 = 18.44\,^\circ\text{C}$ na novú ustálenú hodnotu $y_\infty = 12.63\,^\circ\text{C}$. Priebeh tejto skokovej odozvy orezaný na relevantnú časť pre identifikáciu je znázornený na obrázku \ref{fig:ident_priebeh}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    % Sem vloz cestu k tvojmu obrazku s orezanymi datami
-    % \includegraphics[width=0.8\textwidth]{obrazky/ident_priebeh.png}
+    \includegraphics[width=0.8\textwidth]{images/ident_pumpa_orezane.jpg}
     \caption{Priebeh odozvy systému použitý na identifikáciu}
     \label{fig:ident_priebeh}
 \end{figure}
@@ -76,10 +85,9 @@ Po dosadení vypočítaných parametrov má výsledná prenosová funkcia identi
 
 Správnosť identifikovanej prenosovej funkcie bola graficky overená v prostredí Simulink. Na obrázku \ref{fig:model_vs_data} je zobrazené priame porovnanie nameraných dát z reálneho systému s teoretickou skokovou odozvou navrhnutého modelu $G(s)$. Z grafu je zrejmé, že prenosová funkcia verne zachytáva dynamiku aj statické zosilnenie reálneho systému.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    % Sem vloz cestu k tvojmu obrazku s porovnanim modelu a dat
-    % \includegraphics[width=0.8\textwidth]{obrazky/model_vs_data.png}
+    \includegraphics[width=0.8\textwidth]{images/ident_pumpa_prenos.jpg}
     \caption{Porovnanie nameranej odozvy reálneho systému s identifikovaným modelom}
     \label{fig:model_vs_data}
 \end{figure}
@@ -114,9 +122,9 @@ K výstupu dynamického modelu bol pripočítaný teplotný offset (Bias) $8.43\
 
 Na overenie robustnosti riadenia bola do schémy priamo na výstup systému pridaná skoková porucha. Simulácia potvrdila, že navrhnutý PI regulátor dokáže túto poruchu úspešne kompenzovať a systém spoľahlivo vrátiť na žiadanú hodnotu teploty.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=0.9\textwidth]{obrazky/simulink_schema.png}
+    \includegraphics[width=0.9\textwidth]{images/simulinkSchemaPumpa.jpg}
     \caption{Simulačná schéma uzavretého regulačného obvodu s modelovaním poruchy}
     \label{fig:sim_schema}
 \end{figure}
@@ -125,18 +133,18 @@ Cieľom simulácie bolo overiť schopnosť regulátorov dosiahnuť a udržať no
 
 Po spustení simulácie boli zaznamenané časové priebehy regulovanej veličiny a akčného zásahu. Na obrázku \ref{fig:sim_teplota} je zobrazená prechodová charakteristika uzavretého regulačného obvodu. Z grafu je zrejmé, že teplota sleduje referenčný signál a po prechodnom deji s úvodným prekmitom sa stabilne ustaľuje na žiadanej hodnote.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{obrazky/sim_teplota.png}
+    \includegraphics[width=0.8\textwidth]{images/priebeh_prechodovaChar_sim_cerpadlo.jpg}
     \caption{Prechodová charakteristika uzavretého regulačného obvodu (regulovaná teplota)}
     \label{fig:sim_teplota}
 \end{figure}
 
 Na obrázku \ref{fig:sim_zasah} je následne znázornený priebeh akčného zásahu v čase. Vďaka aplikovanému \textit{anti-windup} mechanizmu a správnej inicializácii pracovného bodu zostáva akčný zásah po celý čas v povolených fyzikálnych medziach. Zásah plynule reaguje na regulačnú odchýlku a nevykazuje vysokofrekvenčné kmitanie, čo je kľúčové pre dlhodobú životnosť reálneho čerpadla.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{obrazky/sim_zasah.png}
+    \includegraphics[width=0.8\textwidth]{images/priebeh_akcnyZasah_sim_cerpadlo.jpg}
     \caption{Priebeh akčného zásahu regulátora (PWM signál čerpadla)}
     \label{fig:sim_zasah}
 \end{figure}

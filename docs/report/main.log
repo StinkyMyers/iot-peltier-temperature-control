@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.27)  27 APR 2026 14:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.27)  4 JUN 2026 14:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -769,9 +769,28 @@ Package caption Info: New subtype `subfigure' on input line 238.
 \c@subfigure=\count466
 Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count467
+) (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen304
+\lightrulewidth=\dimen305
+\cmidrulewidth=\dimen306
+\belowrulesep=\dimen307
+\belowbottomsep=\dimen308
+\aboverulesep=\dimen309
+\abovetopsep=\dimen310
+\cmidrulesep=\dimen311
+\cmidrulekern=\dimen312
+\defaultaddspace=\dimen313
+\@cmidla=\count468
+\@cmidlb=\count469
+\@aboverulesep=\dimen314
+\@belowrulesep=\dimen315
+\@thisruleclass=\count470
+\@lastruleclass=\count471
+\@thisrulewidth=\dimen316
 ) (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
-\babel@savecnt=\count468
+\babel@savecnt=\count472
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2068.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2070.
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2072.
@@ -779,11 +798,11 @@ LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line
 LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2074.
 LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2076.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2101.
-\U@D=\dimen304
+\U@D=\dimen317
 \l@unhyphenated=\language80
  (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read5
-\bbl@dirlevel=\count469
+\bbl@dirlevel=\count473
 Package babel Info: Configuration files are deprecated, as
 (babel)             they can break document portability.
 (babel)             Reported on input line 4196.
@@ -801,7 +820,7 @@ Language: slovak 2008/07/06 v3.1a Slovak support from the babel system
 Package babel Info: Making ^ an active character on input line 123.
 Package babel Info: Making " an active character on input line 126.
 Package babel Info: Making ' an active character on input line 129.
-\cs@wordlen=\count470
+\cs@wordlen=\count474
 Package babel Info: Making - an active character on input line 294.
 )) (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
@@ -811,13 +830,22 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@posthook=\toks42
 ) (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count471
+\c@float@type=\count475
 \float@exts=\toks43
 \float@box=\box68
 \@float@everytoks=\toks44
 \@floatcapt=\box69
 ) (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
+) (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen318
+\ar@mcellbox=\box70
+\extrarowheight=\dimen319
+\NC@list=\toks45
+\extratabsurround=\skip92
+\backup@length=\skip93
+\ar@cellbox=\box71
 )
 
 Package biblatex Warning: Load 'inputenc' before biblatex.
@@ -826,56 +854,56 @@ Package biblatex Warning: Load 'inputenc' before biblatex.
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count472
-\@quotereset=\count473
+\@quotelevel=\count476
+\@quotereset=\count477
 (main.aux
 Package babel Info: 'slovak' activates 'slovak' shorthands.
 (babel)             Reported on input line 13.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count474
-\scratchdimen=\dimen305
-\scratchbox=\box70
-\nofMPsegments=\count475
-\nofMParguments=\count476
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count477
-\MPscratchDim=\dimen306
-\MPnumerator=\count478
-\makeMPintoPDFobject=\count479
-\everyMPtoPDFconversion=\toks46
+\scratchcounter=\count478
+\scratchdimen=\dimen320
+\scratchbox=\box72
+\nofMPsegments=\count479
+\nofMParguments=\count480
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count481
+\MPscratchDim=\dimen321
+\MPnumerator=\count482
+\makeMPintoPDFobject=\count483
+\everyMPtoPDFconversion=\toks47
 ) (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\lilug\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 14.
+Package hyperref Info: Link coloring ON on input line 15.
  (main.out) (main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
@@ -893,8 +921,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 14.
-Package biblatex Info: Reference segment=0 on input line 14.
+Package biblatex Info: Reference section=0 on input line 15.
+Package biblatex Info: Reference segment=0 on input line 15.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -932,42 +960,195 @@ Package biblatex Info: Reference segment=0 on input line 14.
 
 (front/cover.tex [1
 
-{C:/Users/lilug/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]) (main.toc)
-\tf@toc=\write6
-\openout6 = `main.toc'.
-
-
+{C:/Users/lilug/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]) (main.toc
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.22 \newpage
-              [1] (chapters/1_uloha.tex) (chapters/2_uloha.tex) (chapters/3_uloha.tex) (chapters/4_uloha.tex) (chapters/zaver.tex)
+l.36 ...{7.1}Flask + SocketIO}{15}{subsection.7.1}
+                                                  % [1])
+\tf@toc=\write6
+\openout6 = `main.toc'.
 
-LaTeX Warning: Empty bibliography on input line 33.
+ [2] (chapters/1_uloha.tex [1]
+<images/schema_zapojenia.png, id=349, 1173.38374pt x 831.105pt>
+File: images/schema_zapojenia.png Graphic file (type png)
+<use images/schema_zapojenia.png>
+Package pdftex.def Info: images/schema_zapojenia.png  used on input line 79.
+(pdftex.def)             Requested size: 424.82523pt x 300.89691pt.
+ [2] [3 <./images/schema_zapojenia.png>]) (chapters/2_uloha.tex
+<images/uml_diagram.png, id=366, 964.60374pt x 1115.16624pt>
+File: images/uml_diagram.png Graphic file (type png)
+<use images/uml_diagram.png>
+Package pdftex.def Info: images/uml_diagram.png  used on input line 7.
+(pdftex.def)             Requested size: 472.03123pt x 545.70456pt.
+ [4] [5 <./images/uml_diagram.png>]) (chapters/3_uloha.tex [6] [7]
+<images/ident_peltier_raw.jpg, id=391, 752.0597pt x 566.86781pt>
+File: images/ident_peltier_raw.jpg Graphic file (type jpg)
+<use images/ident_peltier_raw.jpg>
+Package pdftex.def Info: images/ident_peltier_raw.jpg  used on input line 29.
+(pdftex.def)             Requested size: 401.22942pt x 302.43658pt.
 
-[1] (main.aux)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 34.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 34.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 34.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 34.
+
+[8 <./images/ident_peltier_raw.jpg>]
+<images/ident_pumpa_raw.jpg, id=398, 752.0597pt x 566.86781pt>
+File: images/ident_pumpa_raw.jpg Graphic file (type jpg)
+<use images/ident_pumpa_raw.jpg>
+Package pdftex.def Info: images/ident_pumpa_raw.jpg  used on input line 48.
+(pdftex.def)             Requested size: 401.22942pt x 302.43658pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 53.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 53.
+
+<images/ident_pumpa_orezane.jpg, id=400, 504.38437pt x 378.66469pt>
+File: images/ident_pumpa_orezane.jpg Graphic file (type jpg)
+<use images/ident_pumpa_orezane.jpg>
+Package pdftex.def Info: images/ident_pumpa_orezane.jpg  used on input line 58.
+(pdftex.def)             Requested size: 377.62642pt x 283.5009pt.
+[9 <./images/ident_pumpa_raw.jpg>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 68.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 68.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 68.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 68.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 68.
+
+[10 <./images/ident_pumpa_orezane.jpg>]
+<images/ident_pumpa_prenos.jpg, id=417, 512.66531pt x 383.93437pt>
+File: images/ident_pumpa_prenos.jpg Graphic file (type jpg)
+<use images/ident_pumpa_prenos.jpg>
+Package pdftex.def Info: images/ident_pumpa_prenos.jpg  used on input line 90.
+(pdftex.def)             Requested size: 377.62642pt x 282.80643pt.
+ [11 <./images/ident_pumpa_prenos.jpg>]
+<images/simulinkSchemaPumpa.jpg, id=425, 1120.185pt x 470.50781pt>
+File: images/simulinkSchemaPumpa.jpg Graphic file (type jpg)
+<use images/simulinkSchemaPumpa.jpg>
+Package pdftex.def Info: images/simulinkSchemaPumpa.jpg  used on input line 127.
+(pdftex.def)             Requested size: 424.82523pt x 178.43585pt.
+ [12]
+<images/priebeh_prechodovaChar_sim_cerpadlo.jpg, id=435, 504.38437pt x 378.66469pt>
+File: images/priebeh_prechodovaChar_sim_cerpadlo.jpg Graphic file (type jpg)
+<use images/priebeh_prechodovaChar_sim_cerpadlo.jpg>
+Package pdftex.def Info: images/priebeh_prechodovaChar_sim_cerpadlo.jpg  used on input line 138.
+(pdftex.def)             Requested size: 377.62642pt x 283.5009pt.
+ [13 <./images/simulinkSchemaPumpa.jpg> <./images/priebeh_prechodovaChar_sim_cerpadlo.jpg>]
+<images/priebeh_akcnyZasah_sim_cerpadlo.jpg, id=443, 517.935pt x 387.69844pt>
+File: images/priebeh_akcnyZasah_sim_cerpadlo.jpg Graphic file (type jpg)
+<use images/priebeh_akcnyZasah_sim_cerpadlo.jpg>
+Package pdftex.def Info: images/priebeh_akcnyZasah_sim_cerpadlo.jpg  used on input line 147.
+(pdftex.def)             Requested size: 377.62642pt x 282.6803pt.
+) (chapters/4_uloha.tex [14 <./images/priebeh_akcnyZasah_sim_cerpadlo.jpg>]) (chapters/zaver.tex
+Overfull \hbox (12.0812pt too wide) in paragraph at lines 28--1
+\T1/cmr/m/n/10.95 pred-chá-dza pre-hria-tiu Pel-tie-rovho £lánku. Pre Mód 3 sú de-fi-no-vané li-mity \T1/cmtt/m/n/10.95 min_pwm=75 \T1/cmr/m/n/10.95 a \T1/cmtt/m/n/10.95 max_pwm=180\T1/cmr/m/n/10.95 .
+ []
+
+
+Overfull \hbox (17.68095pt too wide) in paragraph at lines 3--7
+[]\T1/cmr/m/n/10.95 Backend sys-tému beºí na jed-no-dos-ko-vom po-£í-ta£i Rasp-berry Pi 4B (ve-rejná IP ad-resa \T1/cmtt/m/n/10.95 147.175.105.185\T1/cmr/m/n/10.95 )
+ []
+
+[15]
+Overfull \hbox (68.96483pt too wide) in paragraph at lines 15--18
+[]\T1/cmr/m/n/10.95 Server po-£úva na porte \T1/cmtt/m/n/10.95 5000 \T1/cmr/m/n/10.95 a je na-kon-fi-gu-ro-vaný pre viac-vlák-nový asynch-rónny re-ºim (\T1/cmtt/m/n/10.95 async_mode='threading'\T1/cmr/m/n/10.95 ),
+ []
+
+
+Overfull \hbox (18.49432pt too wide) in paragraph at lines 21--23
+[]\T1/cmtt/m/n/10.95 command \T1/cmr/m/n/10.95 -- prí-jem prí-ka-zov z fron-tendu (OPEN, START, STOP, CLOSE, MODE1/2/3, SET_PID), 
+ []
+
+[16] [17]
+<images/login_screen_peltier.png, id=464, 335.75438pt x 241.65282pt>
+File: images/login_screen_peltier.png Graphic file (type png)
+<use images/login_screen_peltier.png>
+Package pdftex.def Info: images/login_screen_peltier.png  used on input line 120.
+(pdftex.def)             Requested size: 283.22162pt x 203.84244pt.
+ [18 <./images/login_screen_peltier.png>]
+<images/mod_1_peltier.png, id=475, 1136.44576pt x 517.935pt>
+File: images/mod_1_peltier.png Graphic file (type png)
+<use images/mod_1_peltier.png>
+Package pdftex.def Info: images/mod_1_peltier.png  used on input line 162.
+(pdftex.def)             Requested size: 472.03123pt x 215.12868pt.
+<images/mod_2_peltier.png, id=476, 1151.502pt x 521.5485pt>
+File: images/mod_2_peltier.png Graphic file (type png)
+<use images/mod_2_peltier.png>
+Package pdftex.def Info: images/mod_2_peltier.png  used on input line 168.
+(pdftex.def)             Requested size: 472.03123pt x 213.79646pt.
+ [19 <./images/mod_1_peltier.png>]
+<images/mod_3_peltier.png, id=483, 1145.4795pt x 517.935pt>
+File: images/mod_3_peltier.png Graphic file (type png)
+<use images/mod_3_peltier.png>
+Package pdftex.def Info: images/mod_3_peltier.png  used on input line 174.
+(pdftex.def)             Requested size: 472.03123pt x 213.42952pt.
+
+Overfull \hbox (5.90953pt too wide) in paragraph at lines 180--182
+[]\T1/cmr/m/n/10.95 Pod gra-fom sú umiest-nené tri ana-ló-gové ci-fer-níky (gau-ges) im-ple-men-to-vané po-mo-cou kniº-nice \T1/cmr/bx/n/10.95 canvas-
+ []
+
+<images/ciferniky_peltier.png, id=484, 841.34325pt x 142.73325pt>
+File: images/ciferniky_peltier.png Graphic file (type png)
+<use images/ciferniky_peltier.png>
+Package pdftex.def Info: images/ciferniky_peltier.png  used on input line 193.
+(pdftex.def)             Requested size: 472.03123pt x 80.08034pt.
+[20 <./images/mod_2_peltier.png> <./images/mod_3_peltier.png>] [21 <./images/ciferniky_peltier.png>])
+
+LaTeX Warning: Empty bibliography on input line 34.
+
+[22] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A595593092D2D2FFFBF6DA903C8B105E;385.
+(rerunfilecheck)             Checksum: BD90400FD9C113E1E6C3EE988622D08D;10709.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32553 strings out of 467871
- 625607 string characters out of 5418376
- 1517599 words of memory out of 5000000
- 60931 multiletter control sequences out of 15000+600000
- 631884 words of font info for 46 fonts, out of 8000000 for 9000
+ 33041 strings out of 467871
+ 634937 string characters out of 5418376
+ 1532581 words of memory out of 5000000
+ 61283 multiletter control sequences out of 15000+600000
+ 641130 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,5n,118p,765b,1703s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk>
-Output written on main.pdf (3 pages, 49411 bytes).
+ 99i,11n,118p,765b,2125s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcbx1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\lilug\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/lilug/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (25 pages, 1236812 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
- 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1127 PDF objects out of 1200 (max. 8388607)
+ 119 named destinations out of 1000 (max. 500000)
+ 587 words of extra memory for PDF output out of 10000 (max. 10000000)
 
