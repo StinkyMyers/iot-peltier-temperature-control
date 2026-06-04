@@ -2,7 +2,7 @@
 
 \subsection{Popis kódu}
 
-Firmvér je implementovaný v jazyku C++ pomocou frameworku Arduino pre ESP32 v prostredí PlatformIO. Jadrom firmvéru je stavový automat s piatimi stavmi: \texttt{MODE\_STOP}, \texttt{MODE\_STABILIZE}, \texttt{MODE\_PID\_TEC}, \texttt{MODE\_PID\_PUMP} a \texttt{MODE\_MANUAL}. Hlavná slučka beží s periódou 5 sekundy, počas ktorej sa vykoná meranie teploty, výpočet regulátora a publikovanie dát cez MQTT.
+Firmvér je implementovaný v jazyku C++ pomocou frameworku Arduino pre ESP32 v prostredí PlatformIO. Jadrom firmvéru je stavový automat s piatimi stavmi: \texttt{MODE\_STOP}, \texttt{MODE\_STABILIZE}, \texttt{MODE\_PID\_TEC}, \texttt{MODE\_PID\_PUMP} a \texttt{MODE\_MANUAL}. Hlavná slučka beží s periódou 5 sekúnd, počas ktorej sa vykoná meranie teploty, výpočet regulátora a publikovanie dát cez MQTT.
 
 \subsection{PWM konfigurácia}
 

@@ -14,7 +14,7 @@ Diagram zobrazuje päť vrstiev architektúry, farebne odlíšených:
 
 \textbf{Hardvér} --- fyzické komponenty pripojené k ESP32: teplotný senzor DS18B20 (OneWire), Peltierov článok TEC1-12706 riadený PWM, vodná pumpa (PWM), ventilátor a SSR relé pre ohrievač.
 
-\textbf{Mikrokontrolér ESP32} --- centrálny prvok implementujúci stavový automat s módmi: Mód~1 (manuál), Mód~2 (PID\,--\,TEC), Mód~3 (PID\,--\,pumpa), Stabilizácia a Stop. Vzorkuje teplotu každé 2 sekundy a komunikuje cez WiFi a MQTT.
+\textbf{Mikrokontrolér ESP32} --- centrálny prvok implementujúci stavový automat s módmi: Mód~1 (manuál), Mód~2 (PID\,--\,TEC), Mód~3 (PID\,--\,pumpa), Stabilizácia a Stop. Vzorkuje teplotu každých 5 sekúnd a komunikuje cez WiFi a MQTT.
 
 \textbf{Backend --- Raspberry Pi (147.175.105.185)} --- skladá sa zo štyroch komponentov: Mosquitto (MQTT broker :1883), Flask + SocketIO (REST API + WebSocket :5000), SQLite (archivácia meraní) a správa rolí Operátor\,/\,Spektátor.
 

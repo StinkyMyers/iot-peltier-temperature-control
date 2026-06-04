@@ -38,28 +38,29 @@
 \contentsline {subsection}{\numberline {7.2}MQTT broker (Mosquitto)}{19}{subsection.7.2}%
 \contentsline {subsection}{\numberline {7.3}SQL databáza}{20}{subsection.7.3}%
 \contentsline {subsection}{\numberline {7.4}CSV + JSON archivácia}{20}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Thingsboard integrácia}{21}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.5}ThingsBoard integrácia}{21}{subsection.7.5}%
 \contentsline {section}{\numberline {8}Frontend - Webový dashboard}{21}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Popis funkcií (Open/Start/Stop/Close)}{21}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.1}Popis funkcií (Open/Start/Stop/Close)}{22}{subsection.8.1}%
 \contentsline {subsection}{\numberline {8.2}Grafy}{22}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Ciferníky}{23}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.3}Ciferníky}{24}{subsection.8.3}%
 \contentsline {subsection}{\numberline {8.4}Tabuľka meraní}{24}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}PID Panel}{24}{subsection.8.5}%
-\contentsline {subsection}{\numberline {8.6}Dashboard}{24}{subsection.8.6}%
-\contentsline {section}{\numberline {9}Výsledky merania}{25}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Graf regulácie Mód 2}{25}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Graf regulácie Mód 3}{25}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Zhodnotenie kvality regulácie}{25}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Porovnanie módov}{25}{subsection.9.4}%
-\contentsline {section}{\numberline {10}Používateľská príručka}{25}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Spustenie systému (krok za krokom)}{25}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Popis tlačidiel dashboardu}{25}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Nastavenie PID parametrov}{25}{subsection.10.3}%
-\contentsline {subsection}{\numberline {10.4}Export dát}{25}{subsection.10.4}%
-\contentsline {section}{\numberline {11}Vývojárska príručka}{25}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Štruktúra repozitára (GitHub link)}{25}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}Inštalácia závislostí}{25}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Konfigurácia (WiFi, MQTT, port)}{25}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}Spustenie backendu}{25}{subsection.11.4}%
-\contentsline {section}{\numberline {12}Záver}{25}{section.12}%
-\contentsline {section}{\numberline {13}Zoznam literatúry}{25}{section.13}%
+\contentsline {subsection}{\numberline {8.5}Simulácia poruchy}{25}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}PID Panel}{25}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Dashboard}{25}{subsection.8.7}%
+\contentsline {section}{\numberline {9}Výsledky merania}{26}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Graf regulácie Mód 2}{26}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Graf regulácie Mód 3}{27}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Zhodnotenie kvality regulácie}{27}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Porovnanie módov}{28}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Používateľská príručka}{28}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Spustenie systému (krok za krokom)}{28}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Popis tlačidiel dashboardu}{29}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Nastavenie PID parametrov}{29}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Export dát}{29}{subsection.10.4}%
+\contentsline {section}{\numberline {11}Vývojárska príručka}{29}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Štruktúra repozitára}{29}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Inštalácia závislostí}{30}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Konfigurácia (WiFi, MQTT, port)}{30}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Spustenie backendu}{30}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Záver}{30}{section.12}%
+\contentsline {section}{\numberline {13}Referencie}{31}{section.13}%
