@@ -197,6 +197,16 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
     allOff();
     Serial.println("# STATUS: STOP");
 
+  } else if (cmd == "HEATER_ON") {
+    // --- NOVÝ PRÍKAZ: Zapnutie výhrevného telieska (Simulácia poruchy) ---
+    digitalWrite(PIN_SSR, HIGH);
+    Serial.println("# STATUS: PORUCHA - VYHREV ZAPNUTY");
+
+  } else if (cmd == "HEATER_OFF") {
+    // --- NOVÝ PRÍKAZ: Vypnutie výhrevného telieska ---
+    digitalWrite(PIN_SSR, LOW);
+    Serial.println("# STATUS: PORUCHA - VYHREV VYPNUTY");
+
   } else if (cmd.startsWith("MANUAL:")) {
     // Formát: MANUAL:153:128
     int sep = cmd.indexOf(':', 7);
@@ -237,7 +247,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
 
   } else if (cmd.startsWith("SET_MAX:")) {
     max_pwm = cmd.substring(8).toInt();
-  }
+  } 
 }
 
 // =========================================================================
